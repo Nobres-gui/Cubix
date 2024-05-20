@@ -1,0 +1,416 @@
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+body{
+    margin: 0;
+    height: 500vh;
+    width: 100%;
+    font-family: 'Poetsen One';
+    overflow-x: hidden;
+}
+.nav {
+    height: 90px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #ffffff;
+	width: 100%;
+    position: fixed;
+    z-index: 10;
+}
+.imgLogo{
+	width: 50px;
+}
+.navPaginas{
+	margin: 0 15px;
+	text-transform: uppercase;
+	text-decoration: none;
+	letter-spacing: 2px;
+	color: #000000;
+	font-weight: 600;
+	cursor: pointer;
+	transition: 0.3s ease;
+	border-bottom: 2px solid transparent;
+}
+#pagina1:hover{
+	font-size: 20px;
+	color: #fd2828;
+}
+#pagina2:hover{ 
+	font-size: 20px;
+	color: #43f561;
+}
+#pagina3:hover{ 
+	font-size: 20px;
+	color: #ff9c1a;
+}
+#pagina4:hover{ 
+	font-size: 20px;
+	color: #5589ff;
+}
+.window1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #0b79d2;
+    width: 100%;
+}
+.TituloText{
+    position: absolute;
+    margin: 0;
+    color: #ffff33;
+    font-size: 15em;
+    font-style: italic;
+    
+}
+.TituloText::after{
+    content: attr(text);
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    color: transparent;
+    -webkit-text-stroke: 0.35vw #ffff33;
+
+}
+.window1 img {
+    width: 450px;
+    animation: CubeAnimation 4s cubic-bezier(0.25, 1, 0.5, 1) infinite alternate;
+}
+@keyframes CubeAnimation {
+    0%, 20% {
+        transform: 
+        translate(100vw, 0) rotate(110deg)
+    }
+    90%, 100%{
+        transform: 
+        translate(0.5vw, -1vw) rotate(-10deg);
+    }
+}
+.img_separacao1{
+    display: flex;
+    position: relative;
+    background-image: url(../IMG/HomePage/separacao2.svg);
+    width: 100%;
+    height: 50px;
+    transform: rotate(180deg);
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #0b79d2;
+    z-index: 1;
+    margin-bottom: 0;
+}
+.window2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background-color: #fd2828;
+}
+.textW2{
+    width: 40%;
+    font-size: 20px;
+    text-align: justify;
+    
+}
+.imgCriador{
+    position: relative;
+    right: 50px;
+    bottom: 50px;
+    width: 50%;
+}
+.img_separacao2{
+    display: flex;
+    background-image: url(../IMG/HomePage/separacao1.svg);
+    width: 100%;
+    height: 50px;
+    transform: rotate(180deg);
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #30dd4d;
+    z-index: -1;
+    margin-bottom: 0;
+}
+.window3{
+    background-color: #30dd4d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+.textW3{
+    font-size: 20px;
+    width: 40%;
+    text-align: justify;
+}
+.div_button{
+    line-height: 40px;
+    height: 40px;
+    text-align: center;
+    width: 238px;
+    cursor: pointer; /*deixa o cursor em formato de click */
+  }
+.btnW3 {
+    color: #fff;
+    position: relative;
+    transition: all 0.5s; /*Deixa a animação mais fluida*/
+  }
+  .btnW3::before /*O before define os estilos do elemento imaginário antes do conteúdo real*/{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 238px;
+    height: 40px;
+    border-radius: 20px;
+    z-index: 1; /*define em que camada o elemento vai estar, tendo o maior numero sendo mostrado em cima */
+    background-color: #22612c;
+    transition: all 0.3s; /*Deixa a animação mais fluida*/
+  }
+  .btnW3:hover::before {
+    opacity: 0 ; /*muda a trasparencia do elemento */
+    transform: scale(0.5,0.5); /*transforma a imagem, nesse caso a escala do elemento*/
+  }
+  .btnW3::after /*O after adiciona um elemento imaginario depois do conteúdo real do botão.*/{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 238px;
+    height: 40px;
+    border-radius: 20px;
+    z-index: 1;
+    opacity: 0; /*muda a trasparencia do elemento */
+    transition: all 0.3s; /*Deixa a animação mais fluida*/
+    border: 1px solid rgba(255, 255, 255, 0.859);
+    transform: scale(1.2,1.2); /*transforma a imagem, nesse caso a escala do elemento*/
+  }
+  .btnW3:hover::after {
+    opacity: 1; /*muda a trasparencia do elemento */
+    transform: scale(1,1); /*transforma a imagem, nesse caso a escala do elemento*/
+  }
+.img_separacao3{
+    display: flex;
+    background-image: url(../IMG/HomePage/separacao2.svg);
+    width: 100%;
+    height: 50px;
+    transform: rotate(180deg);
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #30dd4d;
+    z-index: -1;
+    margin-bottom: 0;
+}
+.window4{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #ffb45a;
+}
+.textW4{
+    font-size: 20px;
+    width: 40%;
+    text-align: justify;
+}
+.img_separacao4{
+    display: flex;
+    background-image: url(../IMG/HomePage/separacao1.png);
+    width: 100%;
+    height: 50px;
+    transform: rotate(180deg);
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #f0ff6a;
+    z-index: -1;
+    margin-bottom: 0;
+}
+.window5{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0ff6a;
+}
+.cards{
+    display: flex;
+}
+.card{
+    border: 3px dashed ;
+    width: 400px;
+    height: 500px;
+    margin: 15px;
+    background-color: #ffffff9e;
+    border-radius: 10px;
+}
+.card:hover{
+    transform: translateY(-3px) scale(1.05) rotateX(15deg);
+    
+}
+.textW5{
+    margin-top: 30px;
+    margin: 15px;
+    text-align: justify;
+}
+
+footer {
+    width: 100%;
+    height: 170px;
+    background-color: #484848;
+    padding: 40px;
+    display: flex;
+  }
+
+  footer p{
+    width: 375px; 
+  }
+
+  /* Detalhes da parte esquerda do Footer */
+  .column1 {
+    margin-left: 10px;
+    width: 440px;
+    border-right: solid;
+  }
+
+  .column1 h2{
+    display: flex;
+    align-items: center;
+    font-size: 27px;
+  }
+
+  .column1 img{
+    border-radius: 100%;
+    margin-right: 3px;
+    height: 50px;
+    width: 50px;
+  }
+
+  /* Detalhes da parte central do Footer */
+  .column2{
+    width: 302px;
+    border-right: solid;
+    margin-left: 20px;
+    flex-direction: column;
+    display: flex;
+  }
+
+  .column2 h2{
+    margin-left: 20px;
+  }
+
+  .column2 a{
+    margin-left: 20px;
+    text-decoration:none;
+    color: black;
+    margin-bottom: 5px;
+  }
+
+  /* Detalhes da parte direita do Footer */
+  .column3{
+    margin-left: 10px;
+    width: 440px;
+    display: flex;
+  }
+
+  .column3 h2{
+    margin-left: 10px;
+  }
+
+  .column3 p{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    width: 330px;
+  }
+
+  .column3 a{
+    text-decoration:none;
+    margin-left: 10px;
+    color: black;
+  }
+
+
+  /* Tamanho dos ícones (facebook, instagram, twitter, linkedin) */
+  .logos .icone1{
+    filter:invert();
+    height: 34px;
+    width: 34px;
+  }
+  .logos .icone2{
+    filter:invert();
+    height: 32px;
+    width: 32px;
+  }
+  .logos .icone3{
+    filter:invert();
+    height: 33px;
+    width: 32px;
+  }   
+  .logos .icone4{
+    filter:invert();
+    height: 32px;
+    width: 32px;
+  }
+
+  /* Ícones localização, telefone e email */
+  .icone5{
+    filter:invert();
+    height: 29px;
+    width: 29px;
+  }
+  .icone6{
+    filter:invert();
+    height: 29px;
+    width: 29px;
+  }
+  .icone7{
+    filter:invert();
+    height: 32px;
+    width: 32px;
+  }
+
+  /* Animação dos ícones Footer*/
+  .logos .icone1:hover {
+    transform: translateY(-5px);
+    transition: all 0.4s;
+  }
+  .logos .icone2:hover {
+    transform: translateY(-5px);
+    transition: all 0.4s;
+  }
+  .logos .icone3:hover {
+    transform: translateY(-5px);
+    transition: all 0.4s;
+  }
+  .logos .icone4:hover {
+    transform: translateY(-5px);
+    transition: all 0.4s;
+  } 
+  .logos2 .icone5:hover {
+    transform: translateY(-5px);
+    transition: all 0.4s;
+  } 
+  .logos2 .icone6:hover {
+    transform: translateY(-5px);
+    transition: all 0.4s;
+  } 
+  .logos2 .icone7:hover {
+    transform: translateY(-5px);
+    transition: all 0.4s;
+  } 
+
+  /* Animação do menu */
+  .column2 a:hover{
+    transform: translateX(5px);
+    transition: all 0.4s;
+    
+  }
+
+
+
+

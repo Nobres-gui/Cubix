@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Entra já</title>
+	<link rel="stylesheet" type="text/css" href="./Css/LoginCadastro.css">
+	<link rel="shortcut icon" href="/IMG/LogoShortcut.png">
+</head>
+<body>
+	<!-- <a href="Home.html" class="setaVoltar">
+		<img class="img_seta" src="/IMG/setaVoltar.png" alt=""/>
+		<span>Voltar</span>
+	</a> -->
+	<header>
+		<nav class="nav">
+			<a href="Home.html" class="navPaginas" id="pagina1">Início</a>
+			<a href="Sobre.html" class="navPaginas" id="pagina2">Sobre mim</a>
+			<a href="Home.html" class="navPaginas" ><img src="./IMG/Logo.png" class="imgLogo" alt="LOGO"></a>
+			<a href="#" class="navPaginas" id="pagina3">Tipos</a>
+			<a href="Home.html" class="navPaginas" id="pagina4">Como Montar</a>
+        </nav>
+    
+      </header>
+	<section class="window">
+	<div class="container">  	
+		<input type="checkbox" id="alterarPage" aria-hidden="true">
+
+			<div class="cadastro">
+				<form>
+					<label for="alterarPage" aria-hidden="true">Cadastre-se</label>
+					<input type="text" name="nome" placeholder="Nome" required="">
+					<input type="email" name="email" placeholder="Email" required="">
+                     <input type="password" name="Senha" placeholder="Senha" required="">
+					<input type="password" name="ConfirmarSenha" placeholder="Confirmar Senha" required="">
+					<a class="btnCadastrar" onclick="cadastrar()">CADASTRAR</a>
+					<div id="div_aguardar" class="loading-div">
+						<img src="./IMG/aguarde-pink2.gif" id="loading-gif" />
+					  </div>
+				</form>
+			</div>
+
+			<div class="login">
+				<form>
+					<label for="alterarPage" aria-hidden="true">Login</label>
+					<input type="email" name="email" placeholder="Email" required="">
+					<input type="password" name="Senha" placeholder="Senha" required="">
+					<a class="btnLogin" onclick="entrar()">LOGIN</a>
+					<div id="div_aguardar" class="loading-div">
+						<img src="./IMG/aguarde-pink2.gif" id="loading-gif" />
+					  </div>
+				</form>
+			</div>
+	</div>
+</section>
+</body>
+</html>
+<script>
+	function entrar() {
+        aguardar();
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+
+                    setTimeout(function () {
+                        window.location = "./dashboard/cards.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+	function cadastrar() {
+    aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = nome_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    var empresaVar = listaEmpresas.value
+    var cpfVar = CPF_input.value
+    var indexarroba = emailVar.indexOf("@")
+    var indexponto = emailVar.indexOf(".")
+    if(indexarroba == -1 && indexponto == -1){
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Email incorreto)";
+      finalizarAguardar();
+      return false;}
+    if(senhaVar.length < 6 ){
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Senha incorreta)";
+      finalizarAguardar();
+      return false;}
+    if(cpfVar.length == 11){
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(CPF incorreta)";
+      finalizarAguardar();
+      return false;}
+    if(nomeVar <= 1){
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Nome incorreto)";
+      finalizarAguardar();
+      return false;}
+    else if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == "" ||
+      empresaVar == "" ||
+      cpfVar == ""
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
+      
+        
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+   
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+        empresaServer: empresaVar,
+        cpfServer: cpfVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+
+  function listar() {
+    fetch("/empresas/listar", {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((empresas) => {
+          empresas.forEach((empresa) => {
+            listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
+          });
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+</script>
