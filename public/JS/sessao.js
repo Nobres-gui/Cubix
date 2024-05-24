@@ -18,19 +18,35 @@ function limparSessao() {
 }
 
 // carregamento (loading)
-function aguardar() {
-    var divAguardar = document.getElementById("div_aguardar");
+function aguardarLogin() {
+    var divAguardar = document.getElementById("div_aguardarLogin");
     divAguardar.style.display = "flex";
 }
 
-function finalizarAguardar(texto) {
-    var divAguardar = document.getElementById("div_aguardar");
+function finalizarAguardarLogin(texto) {
+    var divAguardar = document.getElementById("div_aguardarLogin");
     divAguardar.style.display = "none";
 
-    var divErrosLogin = document.getElementById("div_erros_login");
-    if (texto) {
-        divErrosLogin.style.display = "flex";
-        divErrosLogin.innerHTML = texto;
-    }
+    // var divErrosLogin = document.getElementById("div_erros_login");
+    // if (texto) {
+    //     divErrosLogin.style.display = "flex";
+    //     divErrosLogin.innerHTML = texto;
+    // }
 }
+function aguardarCadastro() {
+    var divAguardar = document.getElementById("div_aguardarCadastro");
+    divAguardar.style.display = "flex";
+}
+
+function finalizarAguardarLogin(texto) {
+    var divAguardar = document.getElementById("div_aguardarCadastro");
+    divAguardar.style.display = "none";
+
+    // var divErrosLogin = document.getElementById("div_erros_login");
+    // if (texto) {
+    //     divErrosLogin.style.display = "flex";
+    //     divErrosLogin.innerHTML = texto;
+    // }
+}
+
 

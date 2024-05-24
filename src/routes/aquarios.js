@@ -7,7 +7,7 @@ router.get("/:empresaId", function (req, res) {
   aquarioController.buscarAquariosPorEmpresa(req, res);
 });
 
-router.post("/cadastrar", function (req, res) {
+router.post("/cadastro", function (req, res) {
   aquarioController.cadastrar(req, res);
 })
 

@@ -114,12 +114,19 @@ body{
     text-align: justify;
     
 }
-.imgCriador{
-    position: relative;
-    right: 50px;
-    bottom: 50px;
-    width: 50%;
+
+.molduraFoto{
+  box-sizing: border-box;
+  position: relative;
+  right: 50px;
+  bottom: 50px;
+  width: 50rem;
+  height: 50rem;
+  /* background: url(../IMG/CriadorCubo.png); */
+  background-size: 100px ;
+   /* background-repeat: no-repeat; */
 }
+
 .img_separacao2{
     display: flex;
     background-image: url(../IMG/HomePage/separacao1.svg);

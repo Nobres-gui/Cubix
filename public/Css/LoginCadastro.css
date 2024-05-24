@@ -60,8 +60,8 @@ body{
 	height: 80vh;
 }
 .container{
-	width: 350px;
-	height: 500px;
+	width: 400px;
+	height: 550px;
 	overflow: hidden;
   	background-color: #5589ff;
 	border-radius: 10px;
@@ -70,6 +70,32 @@ body{
 #alterarPage{
   display: none;
   
+}
+#alterarPage2{
+	display: none;
+	
+  }
+.flexCadastro{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 10px;
+}
+.flexLogin{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 10px;
+}
+  #mensagem_erro{
+    position: relative;
+    color: red;
+    /* z-index: 100; */
+    /* left: 60px; */
+    /* top: 10px; */
+    font-size: 12px;
 }
 /* .setaVoltar{
 	display: flex;
@@ -111,13 +137,13 @@ label{
 	transition: .5s ease-in-out;
 }
 input{
-	width: 60%;
-	height: 10px;
+	width: 65%;
+	height: 40px;
 	background-color: #e0dede;
 	justify-content: center;
-	display: flex;
-	margin: 20px auto;
-	padding: 12px;
+	/* display: flex; */
+	/* margin: 20px auto; */
+	/* padding: 12px; */
 	border: none;
 	outline: none;
 	border-radius: 5px;
@@ -128,12 +154,12 @@ input{
 	justify-content: center;
 	width: 60%;
 	height: 40px;
-	margin: 10px auto;
+	/* margin: 10px auto; */
 	color: #7184fc;
 	background: White;
 	font-size: 1em;
 	font-weight: bold;
-	margin-top: 30px;
+	/* margin-top: 30px; */
 	outline: none;
 	border: none;
 	letter-spacing: 2px;
@@ -150,12 +176,12 @@ input{
 	justify-content: center;
 	width: 60%;
 	height: 40px;
-	margin: 10px auto;
+	/* margin: 10px auto; */
 	color: #fff;
 	background: #5589ff;
 	font-size: 1em;
 	font-weight: bold;
-	margin-top: 30px;
+	/* margin-top: 30px; */
 	outline: none;
 	border: none;
 	letter-spacing: 2px;
@@ -167,7 +193,7 @@ input{
 	background: #7184fc;
 }
 .login{
-	height: 460px;
+	height: 550px;
 	background-color: rgb(255, 255, 255);
 	border-radius: 60% / 10%;
 	transform: translateY(-180px);
@@ -183,12 +209,14 @@ input{
   }
   
   .loading-div img {
-	height: 50px;
-	width: 50px;
+	position: relative;
+    right: 14px;
+    width: 70px;
+    bottom: 20px;
   }
 
 #alterarPage:checked ~ .login{
-	transform: translateY(-500px);
+	transform: translateY(-550px);
 }
 #alterarPage:checked ~ .login label{
 	transform: scale(1);	
