@@ -207,13 +207,12 @@ input{
 	width: 50px;
 	display: none;
   }
-  
-  .loading-div img {
+.loading-div img {
 	position: relative;
     right: 14px;
     width: 70px;
     bottom: 20px;
-  }
+}
 
 #alterarPage:checked ~ .login{
 	transform: translateY(-550px);

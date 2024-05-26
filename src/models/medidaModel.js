@@ -3,10 +3,8 @@ var database = require("../database/config");
 function buscarUltimasMedidas(idAquario, limite_linhas) {
 
     var instrucaoSql = `SELECT 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
+    passo1, passo2, passo3, passo4, passo5, passo6, 
+    passo7, passo8, qtdVezesConcluido, PassosEmDuvida, PassosSemDuvida
                     FROM medida
                     WHERE fk_aquario = ${idAquario}
                     ORDER BY id DESC LIMIT ${limite_linhas}`;
@@ -18,9 +16,8 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
 function buscarMedidasEmTempoReal(idAquario) {
 
     var instrucaoSql = `SELECT 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
+                    passo1, passo2, passo3, passo4, passo5, passo6, 
+                    passo7, passo8, qtdVezesConcluido, PassosEmDuvida, PassosSemDuvida
                         fk_aquario 
                         FROM medida WHERE fk_aquario = ${idAquario} 
                     ORDER BY id DESC LIMIT 1`;

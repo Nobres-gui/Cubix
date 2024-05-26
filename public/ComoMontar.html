@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Como montar</title>
     <link rel="stylesheet" href="Css/ComoMontar.css">
+    <script src="./JS/mudarPaginaAparecerModal.js"></script>
 </head>
 <body>
     <header>
@@ -23,7 +24,20 @@
         <section id="passo1">
             <div class="modal1">
                 <div class="contentModal">
-                    <a onclick="tirarModal(1)">Tirar Modal</a>
+                    <h4>De 1 a 5 quão fácil foi este passo? </h4>
+                    <div id="myDIV">
+                        <input type="radio" id="duvida1a" class="btn1" name="duvida1" value="1">
+                        <label class="duvida1" for="duvida1a"></label>
+                        <input type="radio" id="duvida1b" class="btn2" name="duvida1" value="2">
+                        <label class="duvida2" for="duvida1b"></label>
+                        <input type="radio" id="duvida1c" class="btn3" name="duvida1" value="3">
+                        <label class="duvida3" for="duvida1c"></label>
+                        <input type="radio" id="duvida1d" class="btn4" name="duvida1" value="4">
+                        <label class="duvida4" for="duvida1d"></label>
+                        <input type="radio" id="duvida1e" class="btn5" name="duvida1" value="5">
+                        <label class="duvida5" for="duvida1e"></label> <br>
+                    </div>
+                    <a  class="tirarModal" onclick="tirarModal(1)"></a>
                 </div>
             </div>
             <div class="pagina">
@@ -34,13 +48,13 @@
                     <h3>Passo 1</h3>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam suscipit molestias asperiores!
                 </div>
-                <button class="botaoDuvida1" onclick="verModalDuvida(1)">Você achou dificil esse passo?</button>
+                <a class="botaoDuvida1" onclick="verModalDuvida(1)">Você achou dificil esse passo?</a>
             </div>
             <div class="contentProximoPasso1">
                 <div class="proximoPasso">
                     <a style="color: transparent;">⇠</a>
                     <span> 01/08 </span>  
-                    <a onclick="avancarPasso()">⇢</a>
+                    <a class="btnAvancar" onclick="avancarPasso()">⇢</a>
                 </div>
             </div>
         </section>
@@ -48,7 +62,20 @@
         <section id="passo2">
             <div class="modal2">
                 <div class="contentModal">
-                    <a onclick="tirarModal(2)">Tirar Modal</a>
+                    <h4>De 1 a 5 quão fácil foi este passo? </h4>
+                    <div id="myDIV">
+                        <input type="radio" id="duvida2a" class="btn1" name="duvida2" value="1">
+                        <label class="duvida1" for="duvida2a"></label>
+                        <input type="radio" id="duvida2b" class="btn2" name="duvida2" value="2">
+                        <label class="duvida2" for="duvida2b"></label>
+                        <input type="radio" id="duvida2c" class="btn3" name="duvida2" value="3">
+                        <label class="duvida3" for="duvida2c"></label>
+                        <input type="radio" id="duvida2d" class="btn4" name="duvida2" value="4">
+                        <label class="duvida4" for="duvida2d"></label>
+                        <input type="radio" id="duvida2e" class="btn5" name="duvida2" value="5">
+                        <label class="duvida5" for="duvida2e"></label> <br>
+                    </div>
+                    <a   class="tirarModal" onclick="tirarModal(2)"></a>
                 </div>
             </div>
             <div class="pagina">
@@ -59,13 +86,13 @@
                     <h3>Passo 2</h3>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam suscipit molestias asperiores!
                 </div>
-                <button class="botaoDuvida2" onclick="verModalDuvida(2)">Você achou dificil esse passo?</button>
+                <a  class="botaoDuvida2" onclick="verModalDuvida(2)">Você achou dificil esse passo?</a>
             </div>
             <div class="contentProximoPasso2">
                 <div class="proximoPasso">
-                <a onclick="retrocederPasso()">⇠</a>
+                <a class="btnRetroceder" onclick="retrocederPasso()">⇠</a>
                 <span> 02/08 </span>  
-                <a onclick="avancarPasso()">⇢</a>
+                <a class="btnAvancar" onclick="avancarPasso()">⇢</a>
                 </div>
             </div>
         </section>
@@ -73,9 +100,23 @@
         <section id="passo3">
             <div class="modal3">
                 <div class="contentModal">
-                    <a onclick="tirarModal(3)">Tirar Modal</a>
+                    <h4>De 1 a 5 quão fácil foi este passo? </h4>
+                    <div id="myDIV">
+                        <input type="radio" id="duvida3a" class="btn1" name="duvida3" value="1">
+                        <label class="duvida1" for="duvida3a"></label>
+                        <input type="radio" id="duvida3b" class="btn2" name="duvida3" value="2">
+                        <label class="duvida2" for="duvida3b"></label>
+                        <input type="radio" id="duvida3c" class="btn3" name="duvida3" value="3">
+                        <label class="duvida3" for="duvida3c"></label>
+                        <input type="radio" id="duvida3d" class="btn4" name="duvida3" value="4">
+                        <label class="duvida4" for="duvida3d"></label>
+                        <input type="radio" id="duvida3e" class="btn5" name="duvida3" value="5">
+                        <label class="duvida5" for="duvida3e"></label> <br>
+                    </div>
+                    <a class="tirarModal" onclick="tirarModal(3)"></a>
                 </div>
             </div>
+            
             <div class="pagina">
                 <div class="molduraImg">
                     <img src="./IMG/passo3.svg" alt="">
@@ -84,13 +125,13 @@
                     <h3>Passo 3</h3>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam suscipit molestias asperiores!
                 </div>
-                <button class="botaoDuvida3" onclick="verModalDuvida(3)">Você achou dificil esse passo?</button>
+                <a class="botaoDuvida3" onclick="verModalDuvida(3)">Você achou dificil esse passo?</a>
             </div>
             <div class="contentProximoPasso3">
                 <div class="proximoPasso">
-                <a onclick="retrocederPasso()">⇠</a>
+                <a class="btnRetroceder" onclick="retrocederPasso()">⇠</a>
                 <span> 03/08 </span>  
-                <a onclick="avancarPasso()">⇢</a>
+                <a class="btnAvancar" onclick="avancarPasso()">⇢</a>
                 </div>
             </div>
         </section>
@@ -98,7 +139,20 @@
         <section id="passo4">
             <div class="modal4">
                 <div class="contentModal">
-                    <a onclick="tirarModal(4)">Tirar Modal</a>
+                    <h4>De 1 a 5 quão fácil foi este passo? </h4>
+                    <div id="myDIV">
+                        <input type="radio" id="duvida4a" class="btn1" name="duvida4" value="1">
+                        <label class="duvida1" for="duvida4a"></label>
+                        <input type="radio" id="duvida4b" class="btn2" name="duvida4" value="2">
+                        <label class="duvida2" for="duvida4b"></label>
+                        <input type="radio" id="duvida4c" class="btn3" name="duvida4" value="3">
+                        <label class="duvida3" for="duvida4c"></label>
+                        <input type="radio" id="duvida4d" class="btn4" name="duvida4" value="4">
+                        <label class="duvida4" for="duvida4d"></label>
+                        <input type="radio" id="duvida4e" class="btn5" name="duvida4" value="5">
+                        <label class="duvida5" for="duvida4e"></label> <br>
+                    </div>
+                    <a class="tirarModal" onclick="tirarModal(4)"></a>
                 </div>
             </div>
             <div class="pagina">
@@ -109,13 +163,14 @@
                     <h3>Passo 4</h3>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam suscipit molestias asperiores!
                 </div>
-                <button class="botaoDuvida4" onclick="verModalDuvida(4)">Você achou dificil esse passo?</button>
+        
+                <a class="botaoDuvida4" onclick="verModalDuvida(4)">Você achou dificil esse passo?</a>
             </div>
             <div class="contentProximoPasso4">
                 <div class="proximoPasso">
-                <a onclick="retrocederPasso()">⇠</a>
+                <a class="btnRetroceder" onclick="retrocederPasso()">⇠</a>
                 <span> 04/08 </span>  
-                <a onclick="avancarPasso()">⇢</a>
+                <a class="btnAvancar" onclick="avancarPasso()">⇢</a>
                 </div>
             </div>
         </section>
@@ -123,7 +178,20 @@
         <section id="passo5">
             <div class="modal5">
                 <div class="contentModal">
-                    <a onclick="tirarModal(5)">Tirar Modal</a>
+                    <h4>De 1 a 5 quão fácil foi este passo? </h4>
+                    <div id="myDIV">
+                        <input type="radio" id="duvida5a" class="btn1" name="duvida5" value="1">
+                        <label class="duvida1" for="duvida5a"></label>
+                        <input type="radio" id="duvida5b" class="btn2" name="duvida5" value="2">
+                        <label class="duvida2" for="duvida5b"></label>
+                        <input type="radio" id="duvida5c" class="btn3" name="duvida5" value="3">
+                        <label class="duvida3" for="duvida5c"></label>
+                        <input type="radio" id="duvida5d" class="btn4" name="duvida5" value="4">
+                        <label class="duvida4" for="duvida5d"></label>
+                        <input type="radio" id="duvida5e" class="btn5" name="duvida5" value="5">
+                        <label class="duvida5" for="duvida5e"></label> <br>
+                    </div>
+                    <a class="tirarModal" onclick="tirarModal(5)"></a>
                 </div>
             </div>
             <div class="pagina">
@@ -134,13 +202,13 @@
                     <h3>Passo 5</h3>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam suscipit molestias asperiores!
                 </div>
-                <button class="botaoDuvida5" onclick="verModalDuvida(5)">Você achou dificil esse passo?</button>
+                <a class="botaoDuvida5" onclick="verModalDuvida(5)">Você achou dificil esse passo?</a>
             </div>
             <div class="contentProximoPasso5">
                 <div class="proximoPasso">
-                <a onclick="retrocederPasso()">⇠</a>
+                <a class="btnRetroceder" onclick="retrocederPasso()">⇠</a>
                 <span> 05/08 </span>  
-                <a onclick="avancarPasso()">⇢</a>
+                <a class="btnAvancar" onclick="avancarPasso()">⇢</a>
                 </div>
         </div>
         </section>
@@ -148,7 +216,20 @@
         <section id="passo6">
             <div class="modal6">
                 <div class="contentModal">
-                    <a onclick="tirarModal(6)">Tirar Modal</a>
+                    <h4>De 1 a 5 quão fácil foi este passo? </h4>
+                    <div id="myDIV">
+                        <input type="radio" id="duvida6a" class="btn1" name="duvida1" value="1">
+                        <label class="duvida1" for="duvida6a"></label>
+                        <input type="radio" id="duvida6b" class="btn2" name="duvida6" value="2">
+                        <label class="duvida2" for="duvida6b"></label>
+                        <input type="radio" id="duvida6c" class="btn3" name="duvida6" value="3">
+                        <label class="duvida3" for="duvida6c"></label>
+                        <input type="radio" id="duvida6d" class="btn4" name="duvida6" value="4">
+                        <label class="duvida4" for="duvida6d"></label>
+                        <input type="radio" id="duvida6e" class="btn5" name="duvida6" value="5">
+                        <label class="duvida5" for="duvida6e"></label> <br>
+                    </div>
+                    <a class="tirarModal" onclick="tirarModal(6)"></a>
                 </div>
             </div>
             <div class="pagina">
@@ -159,13 +240,13 @@
                     <h3>Passo 6</h3>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam suscipit molestias asperiores!
                 </div>
-                <button class="botaoDuvida6" onclick="verModalDuvida(6)">Você achou dificil esse passo?</button>
+                <a class="botaoDuvida6" onclick="verModalDuvida(6)">Você achou dificil esse passo?</a>
             </div>
             <div class="contentProximoPasso6">
                     <div class="proximoPasso">
-                <a onclick="retrocederPasso()">⇠</a>
+                <a class="btnRetroceder" onclick="retrocederPasso()">⇠</a>
                  <span> 06/08 </span>  
-                <a onclick="avancarPasso()">⇢</a>
+                <a class="btnAvancar" onclick="avancarPasso()">⇢</a>
                 </div>
             </div>
         </section>
@@ -173,7 +254,20 @@
         <section id="passo7">
             <div class="modal7">
                 <div class="contentModal">
-                    <a onclick="tirarModal(7)">Tirar Modal</a>
+                    <h4>De 1 a 5 quão fácil foi este passo? </h4>
+                    <div id="myDIV">
+                        <input type="radio" id="duvida7a" class="btn1" name="duvida7" value="1">
+                        <label class="duvida1" for="duvida7a"></label>
+                        <input type="radio" id="duvida7b" class="btn2" name="duvida7" value="2">
+                        <label class="duvida2" for="duvida7b"></label>
+                        <input type="radio" id="duvida7c" class="btn3" name="duvida7" value="3">
+                        <label class="duvida3" for="duvida7c"></label>
+                        <input type="radio" id="duvida7d" class="btn4" name="duvida7" value="4">
+                        <label class="duvida4" for="duvida7d"></label>
+                        <input type="radio" id="duvida7e" class="btn5" name="duvida7" value="5">
+                        <label class="duvida5" for="duvida7e"></label> <br>
+                    </div>
+                    <a class="tirarModal" onclick="tirarModal(7)"></a>
                 </div>
             </div>
             <div class="pagina">
@@ -184,13 +278,13 @@
                     <h3>Passo 7</h3>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam suscipit molestias asperiores!
                 </div>
-                <button class="botaoDuvida7" onclick="verModalDuvida(7)">Você achou dificil esse passo?</button>
+                <a class="botaoDuvida7" onclick="verModalDuvida(7)">Você achou dificil esse passo?</a>
             </div>
         <div class="contentProximoPasso7">
             <div class="proximoPasso">
-            <a onclick="retrocederPasso()">⇠</a>
+            <a class="btnRetroceder" onclick="retrocederPasso()">⇠</a>
              <span> 07/08 </span>  
-            <a onclick="avancarPasso()">⇢</a>
+            <a class="btnAvancar" onclick="avancarPasso()">⇢</a>
             </div>
         </div>
         </section>
@@ -198,8 +292,20 @@
         <section id="passo8">
                <div class="modal8">
                 <div class="contentModal">
-
-                    <button onclick="tirarModal(8)">Tirar Modal</button>
+                    <h4>De 1 a 5 quão fácil foi este passo? </h4>
+                    <div id="myDIV">
+                        <input type="radio" id="duvida8a" class="btn1" name="duvida8" value="1">
+                        <label class="duvida1" for="duvida8a"></label>
+                        <input type="radio" id="duvida8b" class="btn2" name="duvida8" value="2">
+                        <label class="duvida2" for="duvida8b"></label>
+                        <input type="radio" id="duvida8c" class="btn3" name="duvida8" value="3">
+                        <label class="duvida3" for="duvida8c"></label>
+                        <input type="radio" id="duvida8d" class="btn4" name="duvida8" value="4">
+                        <label class="duvida4" for="duvida8d"></label>
+                        <input type="radio" id="duvida8e" class="btn5" name="duvida8" value="5">
+                        <label class="duvida5" for="duvida8e"></label> <br>
+                    </div>
+                    <a class="tirarModal" onclick="tirarModal(8)"></a>
                 </div>
             </div> 
             <div class="pagina">
@@ -210,14 +316,14 @@
                     <h3>Passo 8</h3>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam suscipit molestias asperiores!
                 </div>
-                <button class="botaoDuvida8" onclick="verModalDuvida(8)">Você achou dificil esse passo?</button>
+                <a class="botaoDuvida8" onclick="verModalDuvida(8)">Você achou dificil esse passo?</a>
                 
             </div>
             <div class="contentProximoPasso8">
             <div class="proximoPasso">
-            <a  onclick="retrocederPasso()">⇠</a>
+            <a  class="btnRetroceder" onclick="retrocederPasso()">⇠</a>
              <span> 08/08 </span>  <br> 
-             <a class="btnTerminei" onclick="termineiCubo()">TERMINEI O CUBO</a>
+             <a class="btnTerminei" onclick="termineiCubo()">TERMINEI O CUBO!!!</a>
             </div>
         </div>
         </section>
@@ -225,107 +331,13 @@
 </body>
 </html>
 <script>
-let paginaAtual = 1;
-
-function avancarPasso(){  
-
-     const passoAtual = `passo${paginaAtual}`;
-     const stylePasso = document.getElementById(`${passoAtual}`)
-
-     for (let passoPagina = 1; passoPagina <= paginaAtual; passoPagina++) {
-        const proximoPasso = `passo${paginaAtual+1}`
-        const styleProximoPasso = document.getElementById(`${proximoPasso}`)
-        
-
-        if(stylePasso)
-        {
-            stylePasso.style.display = 'none';
-        } 
-        if((paginaAtual + 1) > paginaAtual)
-        {
-            styleProximoPasso.style.display = 'flex';
-            paginaAtual++
-            break
-        }
-
-        
-    }
-}
-
-function retrocederPasso(){
-
-     const passoAtual = `passo${paginaAtual}`;
-     const stylePasso = document.getElementById(`${passoAtual}`)
-
-     for (let passoPagina = paginaAtual; passoPagina >= 1; passoPagina--) {
-        const voltarPasso = `passo${paginaAtual-1}`
-        const styleAnteriorPasso = document.getElementById(`${voltarPasso}`)
-        
-
-        if(stylePasso)
-        {
-            stylePasso.style.display = 'none';
-        } 
-        if((paginaAtual - 1) < paginaAtual)
-        {
-            styleAnteriorPasso.style.display = 'flex';
-            paginaAtual--
-            break
-        }
-
-        
-    }
-}
-
-function switchModal(){
-       const modal = document.querySelector(`.modal${paginaAtual}`)
-       const styleAtual = modal.style.display
-       if(styleAtual == 'block'){
-           modal.style.display = 'none'
-        }
-        else {
-            modal.style.display = 'block'
-        }}
-function verModalDuvida(numeroModal) {
-            switchModal(numeroModal);
-            if( paginaAtual < (paginaAtual + 1)){
-                aparecerProximaPagina(numeroModal);
-            }
-           
-        }
-
-function aparecerProximaPagina(numeroModal){
-         const  btnModal = document.querySelector(`.botaoDuvida${paginaAtual}`);
-
-
-            
-                const setasPasso = document.querySelector(`.contentProximoPasso${paginaAtual}`)
-                const modal = document.querySelector(`.modal${paginaAtual}`)
-                const  btnTerminei = document.querySelector(`.containerBtn`);
-                
-                
-            if(paginaAtual < (paginaAtual + 1))
-            {
-            
-            btnModal.style.display = 'none';
-            setasPasso.style.display = 'block';
-           
-
-        } else{
-        return false;}
-        
-
-    }
-// }
-
-function tirarModal(numeroModal) {
-       
-                const modal = document.querySelector(`.modal${paginaAtual}`);
-                const styleModal = modal.style.display
-                if (styleModal == 'block' ) {
-                    switchModal();
-                }
-}
-
+    const duvida1 = document.querySelector('input[name="duvida1"]:checked').value;
+    const duvida2 = document.querySelector('input[name="duvida2"]:checked').value;
+    const duvida3 = document.querySelector('input[name="duvida3"]:checked').value;
+    const duvida4 = document.querySelector('input[name="duvida4"]:checked').value;
+    const duvida5 = document.querySelector('input[name="duvida5"]:checked').value;
+    const duvida6 = document.querySelector('input[name="duvida6"]:checked').value;
+    const duvida7 = document.querySelector('input[name="duvida7"]:checked').value;
+    const duvida8 = document.querySelector('input[name="duvida8"]:checked').value;
 </script>
  
