@@ -90,7 +90,7 @@
             },
             body: JSON.stringify({
                 emailServer: emailVar,
-                senhaServer: senhaVar
+                senhaServer: senhaVar,
             })
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO entrar()!")
@@ -103,10 +103,11 @@
                     console.log(JSON.stringify(json));
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID = json.idUsusario;
                     
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "./ComoMontar.html";
                     }, 2000); // apenas para exibir o loading
 
                 });
@@ -188,7 +189,7 @@
         // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
         emailServer: emailVar,
-        senhaServer: senhaVar,
+        senhaServer: senhaVar
       }),
     })
       .then(function (resposta) {

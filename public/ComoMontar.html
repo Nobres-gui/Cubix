@@ -6,8 +6,9 @@
     <title>Como montar</title>
     <link rel="stylesheet" href="Css/ComoMontar.css">
     <script src="./JS/mudarPaginaAparecerModal.js"></script>
+    <script src="./JS/sessao.js"></script>
 </head>
-<body>
+<body onload="validarSessao()">
     <header>
         <nav class="nav">
             <a href="LoginCadastro.html" class="navPaginas" id="pagina1">Login</a>
@@ -331,6 +332,7 @@
 </body>
 </html>
 <script>
+    function termineiCubo() {
     const duvida1 = document.querySelector('input[name="duvida1"]:checked').value;
     const duvida2 = document.querySelector('input[name="duvida2"]:checked').value;
     const duvida3 = document.querySelector('input[name="duvida3"]:checked').value;
@@ -339,5 +341,47 @@
     const duvida6 = document.querySelector('input[name="duvida6"]:checked').value;
     const duvida7 = document.querySelector('input[name="duvida7"]:checked').value;
     const duvida8 = document.querySelector('input[name="duvida8"]:checked').value;
+    
+    
+    fetch("/passos/cadastrarRespostas", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          usuarioServer:  sessionStorage.EMAIL_USUARIO,
+          duvida1Server: duvida1,
+          duvida2Server: duvida2,
+          duvida3Server: duvida3,
+          duvida4Server: duvida4,
+          duvida5Server: duvida5,
+          duvida6Server: duvida6,
+          duvida7Server: duvida7,
+          duvida8Server: duvida8
+
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+  
+          if (resposta.ok) {
+            window.location = "./dashboard.html"
+            console.log("DENTRO DO IF DO CADASTRAR")
+  
+         
+          } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+        });
+  
+        
+
+      
+    }
 </script>
  

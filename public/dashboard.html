@@ -1,388 +1,329 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RHS | Dashboard</title>
-    <link rel="stylesheet" href="CSS/dashboard.css" />
-    <link
-      rel="shortcut icon"
-      href="../public/IMG/icone.ico"
-      type="image/x-icon"
-    />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-    <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
-    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
-    <style>
-      canvas {
-        -moz-user-select: none;
-        -webkit-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-    </style>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RHS | Dashboard</title>
+  <link rel="stylesheet" href="CSS/dashboard.css" />
+  <script src="./JS/sessao.js"></script>
+  <link rel="shortcut icon" href="../public/IMG/icone.ico" type="image/x-icon" />
 
-  <!-- <body onload=" atualizarFeed()"> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
+  <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+  <style>
+    canvas {
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+  </style>
+</head>
 
-  <body>
-    <!--  inicio do menu da dashboard  -->
+<!-- <body onload=" atualizarFeed()"> -->
 
-    <div class="menu">
-      <h1><span style="color: #0f7826">RHS</span>olutions</h1>
-      <div class="div_fotouser">
-        <img
-          id="img-foto"
-          src="IMG/Dashboard/adicionar-usuario (1).png"
-          alt=""
-        />
-      </div>
-      <div class="hello">
-        <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-        <br />
-      </div>
+<body onload="obterDadosGrafico()">
+  <!--  inicio do menu da dashboard  -->
 
-      <span id="menu-separacao">Menu</span>
-      <div class="separacao"></div>
+  <div class="menu">
+    <h1><span style="color: #0f7826">RHS</span>olutions</h1>
+    <div class="div_fotouser">
+      <img id="img-foto" src="IMG/Dashboard/adicionar-usuario (1).png" alt="" />
+    </div>
+    <div class="hello">
+      <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+      <br />
+    </div>
 
-      <div class="btn-navbar">
-        <div class="flexNavBar">
-        
-          <a class="outrasPaginas" href="">
-            <img src="IMG/Dashboard/painel-de-controle-verde.png" alt="" />
-            Dashboards
-          </a>
+    <span id="menu-separacao">Menu</span>
+    <div class="separacao"></div>
+
+    <div class="btn-navbar">
+      <div class="flexNavBar">
+
+        <a class="outrasPaginas" href="">
+          <img src="IMG/Dashboard/painel-de-controle-verde.png" alt="" />
+          Dashboards
+        </a>
 
 
-       
-          <a class="outrasPaginas" href="./dashboardRank.html"  >
-            <img src="IMG/Dashboard/sino.png" alt="" />
-            Ranking
-          </a>
-        
 
-        
-          <a class="outrasPaginas" href="">
-            <img src="IMG/Dashboard/configuracoes.png" alt="" />
-            Configurações
-          </a>
-        
-          <a class="btn-logout" href="index.html">SAIR</a>
+        <a class="outrasPaginas" href="./dashboardRank.html">
+          <img src="IMG/Dashboard/sino.png" alt="" />
+          Ranking
+        </a>
+
+
+
+        <a class="outrasPaginas" href="">
+          <img src="IMG/Dashboard/configuracoes.png" alt="" />
+          Configurações
+        </a>
+
+        <a class="btn-logout" href="index.html">SAIR</a>
 
       </div>
     </div>
-    </div>
-    <!-- fim do menu da dashboard -->
+  </div>
+  <!-- fim do menu da dashboard -->
 
-    <div class="dash">
-      <div class="tituloDash">
-        <!-- <h1 id="tituloDash"> Dashboard Geral </h1> -->
-        <h1 id="tituloAlt"></h1>
+  <div class="dash">
+    <div id="graf1" class="div_graficos">
+      <div class="div_grafico">
+        <span>Quantidade de dúvidas por passos</span>
+        <canvas id="qtdDuvidasPassos"></canvas>
       </div>
-      <div id="graftemp" class="div_graficos">
-        <div class="div_grafico">
-          <span>Qunatidade de dúvidas por passos</span>
-          <canvas id="luminosidade"></canvas>
-        </div>
-        <div id="graflumi" class="div_grafico">
-          <span>????????</span>
-          <canvas id="lm35Temperatura"></canvas>
-        </div>
+      <div id="graf???" class="div_grafico">
+        <span>????????</span>
+        <canvas id="??????"></canvas>
       </div>
-      <section class="section_KPIs">
-        
-        <div class="div_KPIs">
-          <div class="div_KPI" id="KPI1">
-            <span class="spanTitulo1"> Vezes que concluído o passo a passo</span>
-            <div class="div_KPI1content">
+    </div>
+    <section class="section_KPIs">
+
+      <div class="div_KPIs">
+        <div class="div_KPI" id="KPI1">
+          <span class="spanTitulo1"> Vezes que concluído o passo a passo</span>
+          <div class="div_KPI1content">
             <span class="spanPorcentagemKPI1">10</span>
+          </div>
+        </div>
+        <div id="KPI2habi" class="KPIhabi" style="display: none;">
+          <span class="spanTitulo2" style="height: 100px">Tempetatura e Luminosidade atual</span>
+          <div class="div_KPI2content">
+            <span class="spanPorcentagemKPI2">18ºC e 702 Lux </span>
+            <div class="divTextoKPI2">
             </div>
           </div>
-          <div id="KPI2habi" class="KPIhabi" style="display: none;">
-            <span class="spanTitulo2" style="height: 100px" >Tempetatura e Luminosidade atual</span>
-            <div class="div_KPI2content">
-                <span class="spanPorcentagemKPI2">18ºC e 702 Lux </span>
-                <div class="divTextoKPI2">
-                </div>
+        </div>
+        <div class="div_KPI" id="KPI2">
+          <span class="spanTitulo2"> Total de passos sem dúvida</span>
+          <div class="div_KPI2content">
+            <span class="spanSemDuvidaContent">5</span>
+            <div class="divTextoKPI2">
             </div>
+          </div>
         </div>
-          <div class="div_KPI" id="KPI2" >
-            <span class="spanTitulo2"> Total de passos sem dúvida</span>
-            <div class="div_KPI2content">
-                <span class="spanSemDuvidaContent">5</span>
-                <div class="divTextoKPI2">
-                </div>
+        <div class="div_KPI" id="KPI3"><span class="spanTitulo3">Total de passos com dúvida</span>
+          <div class="div_KPI3content">
+            <div class="divTextoKPI3">
+              <div id="span_media_temp" class="spanComDuvidaContent">6</div>
             </div>
+          </div>
         </div>
-          <div class="div_KPI" id="KPI3"><span class="spanTitulo3">Total de passos com dúvida</span>
-            <div class="div_KPI3content">
-                <div class="divTextoKPI3">
-                    <div id="span_media_temp" class="spanComDuvidaContent">6</div>
-                </div>
-            </div></div>
-          <div class="div_KPI" id="KPI4">
-            <span class="spanTitulo4">Porcentagem de dúvida por conclusão do passo</span>
-            <div class="div_KPI4content">
-                <div class="divTextoKPI4"> 
-                  <span id="span_media_lumi" class="qtdPorcentagemDuvida">4/8</span>
-                </div>
-            </div></div>
+        <div class="div_KPI" id="KPI4">
+          <span class="spanTitulo4">Porcentagem de dúvida por conclusão do passo</span>
+          <div class="div_KPI4content">
+            <div class="divTextoKPI4">
+              <span id="span_media_lumi" class="qtdPorcentagemDuvida">4/8</span>
+            </div>
+          </div>
         </div>
-      </section>
-      <table class="tabelaRanking"><!-- Define uma tabela -->
-        <thead><!-- Define um cabeçalho de tabela -->
-          <tr><!-- 	Define uma linha de tabela -->
-            <th>Posição</th>      
-           <th>Usuário</th><!-- Define um cabeçalho de tabela -->
-            <th>Idade Média</th>
-            <th>Qtd de vezes concluido</th>
-          </tr>
-        </thead>
-        <tbody><!-- Define o corpo de uma tabela -->
-          <tr>
-            <td>1#</td>
-            <td>José da Silva</td><!-- Define uma célula de tabela -->
-            <td>16:30</td>
-            <td>Antônio da Costa</td>
-          </tr>
-          <tr>
-            <td>2#</td>
-            <td>Ribamar Feitosa</td>
-            <td>16:30</td>
-            <td>Bianca da Silva</td>
-          </tr>
-          <tr>
-              <td>3#</td>
-            <td>Antônio da Costa</td>
-            <td>16:30</td>
-            <td>Antônio da Costa</td>
-          </tr>
-        </tbody>
-        </table>
-        </tbody>
-    </table> 
-    </div>
-  </body>
-  <script>
-    const contextoLm35Temperatura = document
-      .getElementById("lm35Temperatura")
-      .getContext("2d");
+      </div>
+    </section>
+    <table class="tabelaRanking"><!-- Define uma tabela -->
+      <thead><!-- Define um cabeçalho de tabela -->
+        <tr><!-- 	Define uma linha de tabela -->
+          <th>Posição</th>
+          <th>Usuário</th><!-- Define um cabeçalho de tabela -->
+          <th>Idade Média</th>
+          <th>Qtd de vezes concluido</th>
+        </tr>
+      </thead>
+      <tbody><!-- Define o corpo de uma tabela -->
+        <tr>
+          <td>1#</td>
+          <td>José da Silva</td><!-- Define uma célula de tabela -->
+          <td>16:30</td>
+          <td>Antônio da Costa</td>
+        </tr>
+        <tr>
+          <td>2#</td>
+          <td>Ribamar Feitosa</td>
+          <td>16:30</td>
+          <td>Bianca da Silva</td>
+        </tr>
+        <tr>
+          <td>3#</td>
+          <td>Antônio da Costa</td>
+          <td>16:30</td>
+          <td>Antônio da Costa</td>
+        </tr>
+      </tbody>
+    </table>
+    </tbody>
+    </table>
+  </div>
+</body>
+<script>
+  d_usuario = sessionStorage.NOME_USUARIO
 
-    var lm35Temperatura = new Chart(contextoLm35Temperatura, {
-      type: "pie",
+  function plotarDadosBarra(vetorPassos) {
+    var idUsuario = sessionStorage.ID_USUARIO;
+    const ctx = document.getElementById('qtdDuvidasPassos');
+
+    new Chart(ctx, {
+      type: 'bar',
       data: {
-        labels: [
-          "Abaixo da média",
-          "Na média",
-          "Acima da média"
-        ],
-        datasets: [
-          {
-            label: "Luminosidade",
-            data: [1, 18, 1],
-            borderwidht: 1,
-            backgroundColor: ["#75b9d7", "#ffd166", "#ff4d4d"],
-            borderColor: ["#75b9d7", "#ffd166", "#ff4d4d"]
-          },
-        ],
+        labels: ['passo1', 'passo2', 'passo3', 'passo4', 'passo5', 'passo6', 'passo7', 'passo8'],
+        datasets: [{
+          label: 'Nivel duvida',
+          backgroundColor: ['#FF4500', '#FF8C00',
+            '#FFD700'],
+          borderColor: ['#FF4500', '#FF8C00',
+            '#FFD700'],
+          data: vetorPassos,
+          borderWidth: 1
+        }]
       },
       options: {
-        scales: {
-          xAxes: [
-            // {
-            //   distribution: "series",
-            //   ticks: {
-            //     beginAtZero: true,
-            //   },
-            // },
-          ],
-          yAxes: [
-            // {
-            //   scaleLabel: {
-            //     display: true,
-            //     labelString: "Temperatura",
-            //   },
-            //   ticks: {
-            //     beginAtZero: true,
-            //   },
-            // },
-          ],
-        },
-        animation: {
-          duration: 0,
-        },
-      },
-    });
-
-    const contextoLuminosidade = document
-      .getElementById("luminosidade")
-      .getContext("2d");
-    var luminosidade = new Chart(contextoLuminosidade, {
-      type: "bar",
-      data: {
-        labels: ["Passo 1", "Passo 2", "Passo 3", "Passo 4", "Passo 5", "Passo 6", "Passo 7", "Passo 8"],
-        datasets: [
-          {
-            label: "qtd vezes em duvida",
-            data: [3, 4, 2, 1, 1, 4,2,5],
-            borderwidht: 1,
-            backgroundColor: "#f44848", 
+        indexAxis: 'y',
+        plugins: {
+          legend: {
+            labels: {
+              color: '#CFDEF1'
+            }
           }
-        ],
-      },
-      options: {
+        },
         scales: {
-          xAxes: [
-            {
-              distribution: "series",
-              ticks: {
-                beginAtZero: true,
-              },
+          x: {
+            grid: {
+              color: '#44595B'
             },
-          ],
-          yAxes: [
-            {
-              scaleLabel: {
-                display: true,
-                labelString: "Vezes em duvida",
-              },
-              ticks: {
-                beginAtZero: true,
-              },
+            ticks: {
+              color: '#CFDEF1'
+            }
+
+          },
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: '#44595B'
             },
-          ],
-        },
-        animation: {
-          duration: 0,
-        },
-      },
-    });
-
-    const barraDePesquisa = document.querySelector("input"); //<input/>
-    const lista = document.querySelector("ul"); //<ul></ul>
-    const itens = document.querySelectorAll("li"); //<li><li/>
-
-    barraDePesquisa.addEventListener("input", () => {
-      let valorDigitado = barraDePesquisa.value.toLowerCase();
-      itens.forEach((item) => {
-        if (item.textContent.toLowerCase().includes(valorDigitado)) {
-          item.style.display = "block";
-        } else {
-          item.style.display = "none";
+            ticks: {
+              color: '#CFDEF1'
+            }
+          }
         }
-      });
+      }
     });
+  }
 
-    // function limpar_input() {
-    //     document.getElementById("input_search").value = '' ;
-    // }
 
-    function mudarDash() {
-        tituloAlt.innerHTML = "Habitat 5"
-        tituloDash.style.display = 'none'
-        KPI1.style.display = 'none'
-        KPI2.style.display = 'none'
-        graftemp.style.display = 'none'
-        graflumi.style.display = 'none'
-        temphabi.style.display = 'flex'
-        lumihabi.style.display = 'flex'
-        KPI1habi.style.display = 'flex'
-        KPI2habi.style.display = 'flex'
+  function obterDadosGrafico() {
+    fetch("/medidas/graficoBar", { cache: 'no-store' })
+    .then(function (resposta) {
+      if (resposta.ok) {
+        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+        resposta.reverse();
 
-        const contextoLm35Temperatura = document
-      .getElementById("lm35TemperaturaHabi")
-      .getContext("2d");
+        plotarGrafico(resposta);
+      } else {
 
-    var lm35Temperatura = new Chart(contextoLm35Temperatura, {
-      type: "line",
-      data: {
-        labels: ['13H', '14H', '15H', '16H', '17H', '18H'],
-                        datasets: [{
-                        label: 'Temperatura',
-                        data: [22, 29, 21, 24, 14, 23, 31],
-                        borderwidht: 1,
-                        fill: false,
-                        tension: 0.1,
-                        pointStyle: 'circle',
-                        backgroundColor: '#ffd166',
-                        borderColor: '#ffd166'
-          },
-        ],
-      },
-      options: {
-        scales: {
-          xAxes: [
-            {
-              distribution: "series",
-              ticks: {
-                beginAtZero: true,
-              },
+        console.log("Houve um erro ao tentar realizar o login!");
+      }
+
+    }).catch(function (erro) {
+      console.log(erro);
+    })
+
+    return false;
+  }
+
+  function plotarGrafico(resposta){
+    let labels = [];
+    let dados = {
+      labels: labels,
+            datasets: [{
+                label: ['Passo 1', 'Passo 2', 'Passo 3', 'Passo 4', 'Passo 5', 'Passo 6', 'Passo 7', 'Passo 8',],
+                data: [],
+                fill: false,
+                backgroundColor: [
+                    'rgb(255, 99, 132)'
+                ],
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+    };
+
+    const config = {
+            type: 'bar',
+            data: dados,
+            responsive: true,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        
+                            fontColor: '#fffff' // Cor do texto dos rótulos da legenda
+        
+                    },
+                }
             },
-          ],
-          yAxes: [
-            {
-              scaleLabel: {
-                display: true,
-                labelString: "Temperatura",
-              },
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
-        },
-        animation: {
-          duration: 0,
-        },
-      },
-    });
+        };
 
-    const contextoLuminosidade = document
-      .getElementById("luminosidadeHabi")
-      .getContext("2d");
-    var luminosidade = new Chart(contextoLuminosidade, {
-      type: "bar",
-      data: {
-        labels: ["13H", "14H", "15H", "16H", "17H", "18H"],
-        datasets: [
-          {
-            label: "Luminosidade",
-            data: [702, 754, 810, 520, 793, 831],
-            borderwidht: 1,
-            backgroundColor: "#75b9d7"
-          },
-        ],
-      },
-      options: {
-        scales: {
-          xAxes: [
-            {
-              distribution: "series",
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
-          yAxes: [
-            {
-              scaleLabel: {
-                display: true,
-                labelString: "Luminosidade",
-              },
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
-        },
-        animation: {
-          duration: 0,
-        },
-      },
-    });
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`graf1`),
+            config
+        );
+  }
+  function atualizarGrafico(dados, myChart) {
+
+fetch(`/medidas/tempo-real`, { cache: 'no-store' }).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (novoRegistro) {
+
+            
+            // alertar(novoRegistro, idAquario);
+            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+            console.log(`Dados atuais do gráfico:`);
+            console.log(dados);
+
+            
+
+
+            if (novoRegistro[0].faixa == dados.labels[dados.labels.length - 1]) {
+                console.log("---------------------------------------------------------------")
+                console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                
+                console.log("Horário do novo dado capturado:")
+                console.log(novoRegistro[0].faixa)
+                console.log("Horário do último dado capturado:")
+                console.log(dados.labels[dados.labels.length - 1])
+                console.log("---------------------------------------------------------------")
+            } else {
+                // tirando e colocando valores no gráfico
+                dados.labels.shift(); // apagar o primeiro
+                dados.labels.push(novoRegistro[0].faixa); // incluir um novo momento
+
+                dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+                dados.datasets[0].data.push(novoRegistro[0].total_usuarios); // incluir uma nova medida de umidade
+
+             
+
+                myChart.update();
+            }
+
+            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+            proximaAtualizacao = setTimeout(() => atualizarGrafico( dados, graf1), 2000);
+        });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(() => atualizarGrafico(dados, graf1), 2000);
     }
+})
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
 
-  </script>
+}
+
+
+</script>
+
 </html>

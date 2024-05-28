@@ -50,22 +50,6 @@ function retrocederPasso(){
     }
 }
 
-function switchModal(){
-       const modal = document.querySelector(`.modal${paginaAtual}`)
-       const styleAtual = modal.style.display
-       if(styleAtual == 'block'){
-           modal.style.display = 'none'
-        }
-        else {
-            modal.style.display = 'block'
-        }}
-function verModalDuvida(numeroModal) {
-            switchModal(numeroModal);
-            if( paginaAtual < (paginaAtual + 1)){
-                aparecerProximaPagina(numeroModal);
-            }
-           
-        }
 
 function aparecerProximaPagina(numeroModal){
          const  btnModal = document.querySelector(`.botaoDuvida${paginaAtual}`);
@@ -90,6 +74,23 @@ function aparecerProximaPagina(numeroModal){
 
     }
 
+function verModalDuvida(numeroModal) {
+        switchModal(numeroModal);
+        if( paginaAtual < (paginaAtual + 1)){
+            aparecerProximaPagina(numeroModal);
+        }
+       
+ }
+
+function switchModal(){
+        const modal = document.querySelector(`.modal${paginaAtual}`)
+        const styleAtual = modal.style.display
+        if(styleAtual == 'block'){
+            modal.style.display = 'none'
+         }
+         else {
+             modal.style.display = 'block'
+         }}
 
 function tirarModal(numeroModal) {
        
