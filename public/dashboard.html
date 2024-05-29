@@ -10,17 +10,9 @@
   <script src="./JS/sessao.js"></script>
   <link rel="shortcut icon" href="../public/IMG/icone.ico" type="image/x-icon" />
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-  <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
-  <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
-  <style>
-    canvas {
-      -moz-user-select: none;
-      -webkit-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-  </style>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <!-- <body onload=" atualizarFeed()"> -->
@@ -72,9 +64,9 @@
 
   <div class="dash">
     <div id="graf1" class="div_graficos">
-      <div class="div_grafico">
+      <div class="graficoBar">
         <span>Quantidade de dúvidas por passos</span>
-        <canvas id="qtdDuvidasPassos"></canvas>
+        <canvas id="qtdDuvidas"></canvas>
       </div>
       <div id="graf???" class="div_grafico">
         <span>????????</span>
@@ -160,66 +152,73 @@
 <script>
   d_usuario = sessionStorage.NOME_USUARIO
 
-  function plotarDadosBarra(vetorPassos) {
-    var idUsuario = sessionStorage.ID_USUARIO;
-    const ctx = document.getElementById('qtdDuvidasPassos');
+  // function plotarDadosBarra(vetorPassos) {
+  //   var idUsuario = sessionStorage.ID_USUARIO;
+  //   const ctx = document.getElementById('qtdDuvidasPassos');
 
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['passo1', 'passo2', 'passo3', 'passo4', 'passo5', 'passo6', 'passo7', 'passo8'],
-        datasets: [{
-          label: 'Nivel duvida',
-          backgroundColor: ['#FF4500', '#FF8C00',
-            '#FFD700'],
-          borderColor: ['#FF4500', '#FF8C00',
-            '#FFD700'],
-          data: vetorPassos,
-          borderWidth: 1
-        }]
-      },
-      options: {
-        indexAxis: 'y',
-        plugins: {
-          legend: {
-            labels: {
-              color: '#CFDEF1'
-            }
-          }
-        },
-        scales: {
-          x: {
-            grid: {
-              color: '#44595B'
-            },
-            ticks: {
-              color: '#CFDEF1'
-            }
+  //   new Chart(ctx, {
+  //     type: 'bar',
+  //     data: {
+  //       labels: ['passo1', 'passo2', 'passo3', 'passo4', 'passo5', 'passo6', 'passo7', 'passo8'],
+  //       datasets: [{
+  //         label: 'Nivel duvida',
+  //         backgroundColor: ['#FF4500', '#FF8C00',
+  //           '#FFD700'],
+  //         borderColor: ['#FF4500', '#FF8C00',
+  //           '#FFD700'],
+  //         data: vetorPassos,
+  //         borderWidth: 1
+  //       }]
+  //     },
+  //     options: {
+  //       indexAxis: 'y',
+  //       plugins: {
+  //         legend: {
+  //           labels: {
+  //             color: '#CFDEF1'
+  //           }
+  //         }
+  //       },
+  //       scales: {
+  //         x: {
+  //           grid: {
+  //             color: '#44595B'
+  //           },
+  //           ticks: {
+  //             color: '#CFDEF1'
+  //           }
 
-          },
-          y: {
-            beginAtZero: true,
-            grid: {
-              color: '#44595B'
-            },
-            ticks: {
-              color: '#CFDEF1'
-            }
-          }
-        }
-      }
-    });
-  }
+  //         },
+  //         y: {
+  //           beginAtZero: true,
+  //           grid: {
+  //             color: '#44595B'
+  //           },
+  //           ticks: {
+  //             color: '#CFDEF1'
+  //           }
+  //         }
+  //       }
+  //     }
+  //   });
+  // }
 
 
   function obterDadosGrafico() {
     fetch("/medidas/graficoBar", { cache: 'no-store' })
     .then(function (resposta) {
       if (resposta.ok) {
-        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-        resposta.reverse();
+        console.log(resposta);
 
-        plotarGrafico(resposta);
+
+        resposta.json().then(json => {
+                 let vetorPassos = [Number(json.passo1), Number(json.passo2),Number(json.passo3),Number(json.passo4),
+                Number(json.passo5),Number(json.passo6),Number(json.passo7),Number(json.passo8)]
+                
+                console.log(vetorPassos );
+                
+                plotarGrafico(vetorPassos);
+              });
       } else {
 
         console.log("Houve um erro ao tentar realizar o login!");
@@ -230,23 +229,34 @@
     })
 
     return false;
-  }
 
-  function plotarGrafico(resposta){
-    let labels = [];
+
+} 
+  
+
+  function plotarGrafico(vetorPassos){
     let dados = {
-      labels: labels,
-            datasets: [{
-                label: ['Passo 1', 'Passo 2', 'Passo 3', 'Passo 4', 'Passo 5', 'Passo 6', 'Passo 7', 'Passo 8',],
-                data: [],
-                fill: false,
-                backgroundColor: [
-                    'rgb(255, 99, 132)'
-                ],
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
-            }]
+      labels : ['passo1',"passo2","passo3","passo4","passo5","passo6","passo7","passo8"],
+      datasets: [{
+        label: 'qtd duvidas',
+        data: vetorPassos,
+        fill: false,
+        backgroundColor: 
+          'rgb(255, 99, 132)'
+        ,
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1
+      }]
     };
+    // dados.datasets[0].data.push();
+    // for (i = 0; i < resposta.length; i++) {
+    //   console.log('no for')
+    //         var registro = resposta[i];
+    //         labels.push(resposta[i].duvidas);
+    //         dados.datasets[0].data.push(resposta[i].passos);
+
+
+    //     }
 
     const config = {
             type: 'bar',
@@ -256,8 +266,8 @@
                 responsive: true,
                 plugins: {
                     legend: {
-                        position: 'right',
-                        
+                        // position: 'right',
+
                             fontColor: '#fffff' // Cor do texto dos rótulos da legenda
         
                     },
@@ -267,11 +277,12 @@
 
         // Adicionando gráfico criado em div na tela
         let myChart = new Chart(
-            document.getElementById(`graf1`),
+            document.getElementById(`qtdDuvidas`),
             config
         );
+      
   }
-  function atualizarGrafico(dados, myChart) {
+  function atualizarGrafico(dados, qtdDuvidas) {
 
 fetch(`/medidas/tempo-real`, { cache: 'no-store' }).then(function (response) {
     if (response.ok) {
@@ -314,7 +325,7 @@ fetch(`/medidas/tempo-real`, { cache: 'no-store' }).then(function (response) {
     } else {
         console.error('Nenhum dado encontrado ou erro na API');
         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-        proximaAtualizacao = setTimeout(() => atualizarGrafico(dados, graf1), 2000);
+        proximaAtualizacao = setTimeout(() => atualizarGrafico(dados, qtdDuvidas), 2000);
     }
 })
     .catch(function (error) {

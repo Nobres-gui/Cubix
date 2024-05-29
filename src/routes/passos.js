@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 
-var PassosController = require("../controllers/passosController");
+var passosController = require("../controllers/passosController");
 
 
 router.post("/cadastrarRespostas", function (req, res) {
