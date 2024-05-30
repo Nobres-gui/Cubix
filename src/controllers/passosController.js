@@ -1,5 +1,52 @@
 var passosModel = require("../models/passosModel")
 
+function graficoBar(req, res) {
+
+    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+    passosModel.graficoBar()
+    .then((resultado) => {
+        res.json({
+            passo1: resultado[0].passo1,
+            passo2: resultado[0].passo2,
+            passo3: resultado[0].passo3,
+            passo4: resultado[0].passo4,
+            passo5: resultado[0].passo5,
+            passo6: resultado[0].passo6,
+            passo7: resultado[0].passo7,
+            passo8: resultado[0].passo8,
+          
+        });
+    })
+    .catch((error) => {
+        console.error("Erro ao obter dados de ranking:", error);
+        res.status(500).json({ error: "Erro ao obter dados de ranking" });
+    });
+// }
+}  
+function graficoBar2(req, res) {
+
+    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+    passosModel.graficoBar2()
+    .then((resultado) => {
+        res.json({
+            passo1: resultado[0].passo1,
+            passo2: resultado[0].passo2,
+            passo3: resultado[0].passo3,
+            passo4: resultado[0].passo4,
+            passo5: resultado[0].passo5,
+            passo6: resultado[0].passo6,
+            passo7: resultado[0].passo7,
+            passo8: resultado[0].passo8,
+          
+        });
+    })
+    .catch((error) => {
+        console.error("Erro ao obter dados de ranking:", error);
+        res.status(500).json({ error: "Erro ao obter dados de ranking" });
+    });
+// }
+}  
+
 function cadastrarRespostas(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var usuario = req.body.usuarioServer;
@@ -31,7 +78,8 @@ function cadastrarRespostas(req, res) {
     }
     
     module.exports = {
-        cadastrarRespostas
-    
+        cadastrarRespostas,
+        graficoBar,
+        graficoBar2
     
     }

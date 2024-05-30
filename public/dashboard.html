@@ -17,13 +17,17 @@
 
 <!-- <body onload=" atualizarFeed()"> -->
 
-<body onload="obterDadosGrafico()">
+<body onload="obterDadosGraficoBar(), validarSessao(), listar(), obterDadosGrafico2()">
   <!--  inicio do menu da dashboard  -->
 
   <div class="menu">
-    <h1><span style="color: #0f7826">RHS</span>olutions</h1>
+    <h1>Cubix</h1>
     <div class="div_fotouser">
-      <img id="img-foto" src="IMG/Dashboard/adicionar-usuario (1).png" alt="" />
+      <img
+        id="img-foto"
+        src="IMG/Dashboard/adicionar-usuario (1).png"
+        alt=""
+      />
     </div>
     <div class="hello">
       <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
@@ -35,42 +39,42 @@
 
     <div class="btn-navbar">
       <div class="flexNavBar">
-
-        <a class="outrasPaginas" href="">
-          <img src="IMG/Dashboard/painel-de-controle-verde.png" alt="" />
-          Dashboards
-        </a>
-
-
-
-        <a class="outrasPaginas" href="./dashboardRank.html">
-          <img src="IMG/Dashboard/sino.png" alt="" />
-          Ranking
-        </a>
-
-
-
-        <a class="outrasPaginas" href="">
+        <a class="outrasPaginas" href="./index.html">
           <img src="IMG/Dashboard/configuracoes.png" alt="" />
-          Configurações
+          Início
+        </a>
+      
+        <a class="outrasPaginas" href="dashboard.html">
+          <img src="IMG/Dashboard/painel-de-controle-verde.png" alt="" />
+          Gráficos
         </a>
 
-        <a class="btn-logout" href="index.html">SAIR</a>
 
-      </div>
+     
+        <a class="outrasPaginas" href="./ComoMontar.html"  >
+          <img src="IMG/Dashboard/sino.png" alt="" />
+          Monte Novamente
+        </a>
+      
+
+      
+      
+        <a class="btn-logout" href="index.html">SAIR DA CONTA</a>
+
     </div>
+  </div>
   </div>
   <!-- fim do menu da dashboard -->
 
   <div class="dash">
     <div id="graf1" class="div_graficos">
       <div class="graficoBar">
-        <span>Quantidade de dúvidas por passos</span>
-        <canvas id="qtdDuvidas"></canvas>
+        <span>Pessoas com nivel de dúvida alto (1 e 2)</span>
+        <canvas id="qtdDuvidasAltas"></canvas>
       </div>
       <div id="graf???" class="div_grafico">
-        <span>????????</span>
-        <canvas id="??????"></canvas>
+        <span>Pessoas com nivel de dúvida médio (3 e 4)</span>
+        <canvas id="qtdDuvidasBaixas"></canvas>
       </div>
     </div>
     <section class="section_KPIs">
@@ -115,107 +119,82 @@
         </div>
       </div>
     </section>
-    <table class="tabelaRanking"><!-- Define uma tabela -->
-      <thead><!-- Define um cabeçalho de tabela -->
-        <tr><!-- 	Define uma linha de tabela -->
-          <th>Posição</th>
-          <th>Usuário</th><!-- Define um cabeçalho de tabela -->
-          <th>Idade Média</th>
-          <th>Qtd de vezes concluido</th>
-        </tr>
-      </thead>
-      <tbody><!-- Define o corpo de uma tabela -->
-        <tr>
-          <td>1#</td>
-          <td>José da Silva</td><!-- Define uma célula de tabela -->
-          <td>16:30</td>
-          <td>Antônio da Costa</td>
-        </tr>
-        <tr>
-          <td>2#</td>
-          <td>Ribamar Feitosa</td>
-          <td>16:30</td>
-          <td>Bianca da Silva</td>
-        </tr>
-        <tr>
-          <td>3#</td>
-          <td>Antônio da Costa</td>
-          <td>16:30</td>
-          <td>Antônio da Costa</td>
-        </tr>
-      </tbody>
-    </table>
-    </tbody>
-    </table>
+    <div class="tabelaRanking"><!-- Define uma tabela -->
+      <div id="tabelaRanking" class="tabela">
+       
+          <div class="cabecalho">
+              <div class="cabecalho-item">Posição</div>
+              <div class="cabecalho-item">Usuário</div>
+              <div class="cabecalho-item">Tutorial Finalizado</div>
+             
+          </div>
+          <!--Para barra de rolagem-->
+          <div class="corpo-scroll">
+              <div id="corpoTabela" class="corpo"></div>
+          </div>
+      </div>
+  </div>
   </div>
 </body>
 <script>
   d_usuario = sessionStorage.NOME_USUARIO
 
-  // function plotarDadosBarra(vetorPassos) {
-  //   var idUsuario = sessionStorage.ID_USUARIO;
-  //   const ctx = document.getElementById('qtdDuvidasPassos');
+  const ranking = [];
+    function listar() {
+        fetch("/medidas/ranking", {
+            method: "GET",
+        })
+            .then(function (resposta) {
+                if (!resposta.ok) {
+                    throw new Error('Erro ao recuperar o ranking');
+                }
+                return resposta.json();
+            })
+            .then((ranking) => {
+                console.log('Dados do ranking recebidos com sucesso:', ranking);
+                preencherRanking(ranking);
+            })
+            .catch(function (erro) {
+                console.error(`#ERRO: ${erro.message}`);
+            });
+    }
+    // função para preencher o ranking
+    function preencherRanking(ranking) {
+        //reordena do maior para o menor (sort() = ornagina os elementos do arraw conforme a função dada)
+        ranking.sort((a, b) => b.pontuacao - a.pontuacao);
 
-  //   new Chart(ctx, {
-  //     type: 'bar',
-  //     data: {
-  //       labels: ['passo1', 'passo2', 'passo3', 'passo4', 'passo5', 'passo6', 'passo7', 'passo8'],
-  //       datasets: [{
-  //         label: 'Nivel duvida',
-  //         backgroundColor: ['#FF4500', '#FF8C00',
-  //           '#FFD700'],
-  //         borderColor: ['#FF4500', '#FF8C00',
-  //           '#FFD700'],
-  //         data: vetorPassos,
-  //         borderWidth: 1
-  //       }]
-  //     },
-  //     options: {
-  //       indexAxis: 'y',
-  //       plugins: {
-  //         legend: {
-  //           labels: {
-  //             color: '#CFDEF1'
-  //           }
-  //         }
-  //       },
-  //       scales: {
-  //         x: {
-  //           grid: {
-  //             color: '#44595B'
-  //           },
-  //           ticks: {
-  //             color: '#CFDEF1'
-  //           }
+        const corpoTabela = document.getElementById('corpoTabela');
+        corpoTabela.innerHTML = '';
 
-  //         },
-  //         y: {
-  //           beginAtZero: true,
-  //           grid: {
-  //             color: '#44595B'
-  //           },
-  //           ticks: {
-  //             color: '#CFDEF1'
-  //           }
-  //         }
-  //       }
-  //     }
-  //   });
-  // }
+        //forEach() é usado para iterar sobre cada entrada no ranking ordenado
+        ranking.forEach((resultado, indice) => {
+            const valorLinha = document.createElement('div');
+            valorLinha.classList.add('linha');
+            valorLinha.innerHTML = `
+            <div class="placar">${indice + 1}º</div>
+            <div class="placar">${resultado.usuario}</div>
+            <div class="placar">${resultado.pontuacao} pontos</div>
+      
+        `;
+            corpoTabela.innerHTML += valorLinha.outerHTML;
+        });
+    }
 
-
-  function obterDadosGrafico() {
-    fetch("/medidas/graficoBar", { cache: 'no-store' })
+  function obterDadosGraficoBar() {
+    
+    fetch("/passos/graficoBar", { cache: 'no-store' })
     .then(function (resposta) {
       if (resposta.ok) {
-        console.log(resposta);
-
+        
 
         resposta.json().then(json => {
+          
                  let vetorPassos = [Number(json.passo1), Number(json.passo2),Number(json.passo3),Number(json.passo4),
                 Number(json.passo5),Number(json.passo6),Number(json.passo7),Number(json.passo8)]
+              
+             
                 
-                console.log(vetorPassos );
+                console.log(resposta );
                 
                 plotarGrafico(vetorPassos);
               });
@@ -238,25 +217,17 @@
     let dados = {
       labels : ['passo1',"passo2","passo3","passo4","passo5","passo6","passo7","passo8"],
       datasets: [{
-        label: 'qtd duvidas',
+        label: 'qtd de pessoas',
         data: vetorPassos,
-        fill: false,
+        // fill: false,
         backgroundColor: 
-          'rgb(255, 99, 132)'
+          '#fd2828'
         ,
-        borderColor: 'rgb(75, 192, 192)',
+        borderColor: '#fd2828',
         tension: 0.1
       }]
     };
-    // dados.datasets[0].data.push();
-    // for (i = 0; i < resposta.length; i++) {
-    //   console.log('no for')
-    //         var registro = resposta[i];
-    //         labels.push(resposta[i].duvidas);
-    //         dados.datasets[0].data.push(resposta[i].passos);
 
-
-    //     }
 
     const config = {
             type: 'bar',
@@ -268,7 +239,7 @@
                     legend: {
                         // position: 'right',
 
-                            fontColor: '#fffff' // Cor do texto dos rótulos da legenda
+                            fontColor: '#000' // Cor do texto dos rótulos da legenda
         
                     },
                 }
@@ -277,12 +248,95 @@
 
         // Adicionando gráfico criado em div na tela
         let myChart = new Chart(
-            document.getElementById(`qtdDuvidas`),
+            document.getElementById(`qtdDuvidasAltas`),
             config
         );
       
   }
-  function atualizarGrafico(dados, qtdDuvidas) {
+
+
+
+  function obterDadosGrafico2() {
+    
+    fetch("/passos/graficoBar2", { cache: 'no-store' })
+    .then(function (resposta) {
+      if (resposta.ok) {
+        
+
+        resposta.json().then(json => {
+          
+                 let vetorPassos2 = [Number(json.passo1), Number(json.passo2),Number(json.passo3),Number(json.passo4),
+                Number(json.passo5),Number(json.passo6),Number(json.passo7),Number(json.passo8)]
+              
+             
+                
+                console.log(resposta );
+                
+                plotarGraficoBar(vetorPassos2);
+              });
+      } else {
+
+        console.log("Houve um erro ao tentar realizar o login!");
+      }
+
+    }).catch(function (erro) {
+      console.log(erro);
+    })
+
+    return false;
+
+
+} 
+  
+
+  function plotarGraficoBar(vetorPassos2){
+    let dados = {
+      labels : ['passo1',"passo2","passo3","passo4","passo5","passo6","passo7","passo8"],
+      datasets: [{
+        label: 'qtd de pessoas',
+        data: vetorPassos2,
+        fill: false,
+        backgroundColor: 
+          '#000'
+        ,
+        borderColor: '#000',
+        tension: 0.1
+      }]
+    };
+
+
+    const config = {
+            type: 'line',
+            data: dados,
+            responsive: true,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        // position: 'right',
+                            
+                          fontColor: 'black' // Cor do texto dos rótulos da legenda
+        
+                    },
+                    
+                }
+            },
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`qtdDuvidasBaixas`),
+            config
+        );
+      
+  }
+
+
+
+
+
+  
+  function atualizarGrafico(dados, qtdDuvidasAltas, qtdDuvidasBaixas) {
 
 fetch(`/medidas/tempo-real`, { cache: 'no-store' }).then(function (response) {
     if (response.ok) {
@@ -325,7 +379,7 @@ fetch(`/medidas/tempo-real`, { cache: 'no-store' }).then(function (response) {
     } else {
         console.error('Nenhum dado encontrado ou erro na API');
         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-        proximaAtualizacao = setTimeout(() => atualizarGrafico(dados, qtdDuvidas), 2000);
+        proximaAtualizacao = setTimeout(() => atualizarGrafico(dados, qtdDuvidasAltas, qtdDuvidasBaixas), 2000);
     }
 })
     .catch(function (error) {

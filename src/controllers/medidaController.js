@@ -1,28 +1,19 @@
 var medidaModel = require("../models/medidaModel");
 
-function graficoBar(req, res) {
-    
-    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-    medidaModel.graficoBar()
-    .then((resultado) => {
-        res.json({
-            passo1: resultado[0].passo1,
-            passo2: resultado[0].passo2,
-            passo3: resultado[0].passo3,
-            passo4: resultado[0].passo4,
-            passo5: resultado[0].passo5,
-            passo6: resultado[0].passo6,
-            passo7: resultado[0].passo7,
-            passo8: resultado[0].passo8
-
+function ranking(req, res) {
+    medidaModel.ranking()
+        .then((resultado) => {
+            console.log(`\nResultados encontrados: ${resultado.length}`);
+            console.log(`Resultados: ${JSON.stringify(resultado)}`);
+            res.status(200).json(resultado);
+        })
+        .catch((error) => {
+            console.error("Erro ao obter dados de ranking:", error);
+            res.status(500).json({ error: "Erro ao obter dados de ranking" });
         });
-    })
-    .catch((error) => {
-        console.error("Erro ao obter dados de ranking:", error);
-        res.status(500).json({ error: "Erro ao obter dados de ranking" });
-    });
-// }
 }
+
+
 function buscarUltimasMedidas(req, res) {
 
 
@@ -63,6 +54,6 @@ function buscarMedidasEmTempoReal(req, res) {
 module.exports = {
     buscarMedidasEmTempoReal,
     buscarUltimasMedidas,
-    graficoBar
+    ranking
 
 }
