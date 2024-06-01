@@ -219,7 +219,7 @@
                 <div class="contentModal">
                     <h4>De 1 a 5 quão fácil foi este passo? </h4>
                     <div id="myDIV">
-                        <input type="radio" id="duvida6a" class="btn1" name="duvida1" value="1">
+                        <input type="radio" id="duvida6a" class="btn1" name="duvida6" value="1">
                         <label class="duvida1" for="duvida6a"></label>
                         <input type="radio" id="duvida6b" class="btn2" name="duvida6" value="2">
                         <label class="duvida2" for="duvida6b"></label>
@@ -332,6 +332,8 @@
 </body>
 </html>
 <script>
+        console.log(sessionStorage.ID_USUARIO)
+        var sessionId = sessionStorage.ID_USUARIO
     function termineiCubo() {
     const duvida1 = document.querySelector('input[name="duvida1"]:checked').value;
     const duvida2 = document.querySelector('input[name="duvida2"]:checked').value;

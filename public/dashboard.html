@@ -138,7 +138,7 @@
 </body>
 <script>
   d_usuario = sessionStorage.NOME_USUARIO
-
+  var email_id = sessionStorage.EMAIL_USUARIO;
   const ranking = [];
     function listar() {
         fetch("/medidas/ranking", {
@@ -181,23 +181,35 @@
     }
 
   function obterDadosGraficoBar() {
-    
-    fetch("/passos/graficoBar", { cache: 'no-store' })
-    .then(function (resposta) {
-      if (resposta.ok) {
-        
 
+    
+    
+    
+    var idUser = sessionStorage.ID_USUARIO;
+    console.log(idUser)
+    fetch("/passos/graficoBar", { method: "GET"
+  })
+  
+  
+  .then(function (resposta) {
+      if (resposta.ok) {
         resposta.json().then(json => {
-          
-                 let vetorPassos = [Number(json.passo1), Number(json.passo2),Number(json.passo3),Number(json.passo4),
-                Number(json.passo5),Number(json.passo6),Number(json.passo7),Number(json.passo8)]
+          let vetorPassos = [
+            Number(json.passo1),
+            Number(json.passo2),
+            Number(json.passo3),
+            Number(json.passo4),
+            Number(json.passo5),
+            Number(json.passo6),
+            Number(json.passo7),
+            Number(json.passo8),
+            (json.usuarioFk == idUser)
+          ]
               
-             
-                
                 console.log(resposta );
                 
                 plotarGrafico(vetorPassos);
-              });
+              ;})
       } else {
 
         console.log("Houve um erro ao tentar realizar o login!");
@@ -209,7 +221,7 @@
 
     return false;
 
-
+  
 } 
   
 
@@ -257,16 +269,26 @@
 
 
   function obterDadosGrafico2() {
-    
-    fetch("/passos/graficoBar2", { cache: 'no-store' })
+    var idUser2 = sessionStorage.ID_USUARIO;
+
+    fetch("/passos/graficoLine", { cache: 'no-store' })
     .then(function (resposta) {
       if (resposta.ok) {
         
 
         resposta.json().then(json => {
           
-                 let vetorPassos2 = [Number(json.passo1), Number(json.passo2),Number(json.passo3),Number(json.passo4),
-                Number(json.passo5),Number(json.passo6),Number(json.passo7),Number(json.passo8)]
+                 let vetorPassos2 = [
+                Number(json.passo1), 
+                Number(json.passo2),
+                Number(json.passo3),
+                Number(json.passo4),
+                Number(json.passo5),
+                Number(json.passo6),
+                Number(json.passo7),
+                Number(json.passo8),
+                (json.usuarioFk == idUser2)
+                ]
               
              
                 
