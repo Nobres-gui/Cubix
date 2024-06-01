@@ -23,30 +23,18 @@ function aguardarLogin() {
     divAguardar.style.display = "flex";
 }
 
-function finalizarAguardarLogin(texto) {
-    var divAguardar = document.getElementById("div_aguardarLogin");
-    divAguardar.style.display = "none";
-
-    // var divErrosLogin = document.getElementById("div_erros_login");
-    // if (texto) {
-    //     divErrosLogin.style.display = "flex";
-    //     divErrosLogin.innerHTML = texto;
-    // }
+function finalizarAguardarLogin() {
+    var divFimAguardar = document.getElementById("div_aguardarLogin");
+    divFimAguardar.style.display = "none";
 }
 function aguardarCadastro() {
     var divAguardar = document.getElementById("div_aguardarCadastro");
     divAguardar.style.display = "flex";
 }
 
-function finalizarAguardarLogin(texto) {
+function finalizarAguardarLogin() {
     var divAguardar = document.getElementById("div_aguardarCadastro");
     divAguardar.style.display = "none";
-
-    // var divErrosLogin = document.getElementById("div_erros_login");
-    // if (texto) {
-    //     divErrosLogin.style.display = "flex";
-    //     divErrosLogin.innerHTML = texto;
-    // }
 }
 
 

@@ -332,6 +332,8 @@
 </body>
 </html>
 <script>
+     let vezesConcluido = 0;
+    sessionStorage.VEZES_CONCLUIDO = vezesConcluido;
         console.log(sessionStorage.ID_USUARIO)
         var sessionId = sessionStorage.ID_USUARIO
     function termineiCubo() {
@@ -344,7 +346,8 @@
     const duvida7 = document.querySelector('input[name="duvida7"]:checked').value;
     const duvida8 = document.querySelector('input[name="duvida8"]:checked').value;
     
-    
+    vezesConcluido +=1
+
     fetch("/passos/cadastrarRespostas", {
         method: "POST",
         headers: {

@@ -4,9 +4,13 @@ var router = express.Router();
 var medidaController = require("../controllers/medidaController");
 
 
-router.post("/cadastrarRespostas", function (req, res) {
-    passosController.cadastrarRespostas(req, res);
+router.get("/buscarResultadoGraficoBar/:idJogador", function (req, res) {
+    medidaController.buscarResultadoGraficoBar(req, res);
 });
+router.get("/buscarResultadoGraficoLine/:idJogador", function (req, res) {
+    medidaController.buscarResultadoGraficoLine(req, res);
+});
+
 
 router.get("/tempo-real", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
