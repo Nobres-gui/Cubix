@@ -29,13 +29,13 @@
 					<label for="alterarPage" aria-hidden="true">Cadastre-se</label>
 					<div class="flexCadastro">
           <input type="text" id="input_nomeCadastro" placeholder="Nome" required="">
-          <div id="mensagem_erroNome"></div>
+          <div id="mensagem_erro"></div>
 					<input type="email" id="input_emailCadastro" placeholder="Email" required="">
-          <div id="mensagem_erroEmail"></div>
+          <div id="mensagem_erro"></div>
           <input type="password" id="input_senhaCadastro" placeholder="Senha" required="">
-           <div id="mensagem_erroSenha"></div>
+           <div id="mensagem_erro"></div>
 					<input type="password" id="input_confirmarSenha" placeholder="Confirmar Senha" required="">
-          <div id="mensagem_erroConfirmarSenha"></div>
+          <div id="mensagem_erro"></div>
 					<a class="btnCadastrar" onclick="cadastrar()">CADASTRAR</a>
 					<div id="div_aguardarCadastro" class="loading-div">
 						<img src="./IMG/aguarde-pink2.gif" id="loading-gif" />
@@ -48,10 +48,10 @@
 				<form>
 					<label for="alterarPage" aria-hidden="true">Login</label>
           <div class="flexLogin">
-					<input type="email" id="input_emailEntrar" placeholder="Email" required=""> 
-          <div id="mensagem_erroEmail">fsdfsdfsd</div>
+					<input type="email" id="input_emailEntrar" placeholder="Email" required="">
+          <div id="mensagem_erro"></div>
 					<input type="password" id="input_senhaEntrar" placeholder="Senha" required="">
-          <div id="mensagem_erroSenha"></div>
+          <div id="mensagem_erro"></div>
 					<a class="btnLogin" onclick="entrar()">LOGIN</a>
 					<div id="div_aguardarLogin" class="loading-div">
 						<img src="./IMG/aguarde-pink2.gif" id="loading-gif" />
@@ -70,17 +70,13 @@
         var emailVar = input_emailEntrar.value;
         var senhaVar = input_senhaEntrar.value;
 
-        if(senhaVar == ""){
-          mensagem_erroSenha.innerHTML = "Campo em branco";
-          finalizarAguardarLogin();
-
-        }
-        if (emailVar == "") {
+        if (emailVar == "" || senhaVar == "") {
             // cardErro.style.display = "block"
-            mensagem_erroEmail.innerHTML = "Campo em branco";
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
             finalizarAguardarLogin();
-
-        }         else {
+            return false;
+        }
+        else {
             setInterval(sumirMensagem, 5000)
         }
 

@@ -90,7 +90,8 @@ function switchModal(){
          }
          else {
              modal.style.display = 'block'
-         }}
+         }
+        }
 
 function tirarModal(numeroModal) {
        

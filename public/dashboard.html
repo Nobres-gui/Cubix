@@ -293,6 +293,9 @@ const ctx2 = document.getElementById(`qtdDuvidasBaixas`);
 
     //forEach() é usado para iterar sobre cada entrada no ranking ordenado
     ranking.forEach((resultado, indice) => {
+
+
+      if(indice < 3){
       const valorLinha = document.createElement('div');
       valorLinha.classList.add('linha');
       valorLinha.innerHTML = `
@@ -302,7 +305,7 @@ const ctx2 = document.getElementById(`qtdDuvidasBaixas`);
       
         `;
       corpoTabela.innerHTML += valorLinha.outerHTML;
-    });
+    }});
   }
 
 
