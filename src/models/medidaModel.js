@@ -55,26 +55,20 @@ function ranking() {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
-function KPIs() {
+function buscarKPIs() {
 
   var instrucaoSql = `
-    SELECT SUM(qtdVezesConcluido), 
-    SUM(CASE WHEN passo1 < 5 THEN 1 ELSE 0 END) AS passo1, 
-    SUM(CASE WHEN passo2 < 5 THEN 1 ELSE 0 END) AS passo2, 
-    SUM(CASE WHEN passo3 < 5 THEN 1 ELSE 0 END) AS passo3, 
-    SUM(CASE WHEN passo4 < 5 THEN 1 ELSE 0 END) AS passo4, 
-    SUM(CASE WHEN passo5 < 5 THEN 1 ELSE 0 END) AS passo5, 
-    SUM(CASE WHEN passo6 < 5 THEN 1 ELSE 0 END) AS passo6, 
-    SUM(CASE WHEN passo7 < 5 THEN 1 ELSE 0 END) AS passo7, 
-    SUM(CASE WHEN passo8 < 5 THEN 1 ELSE 0 END) AS passo8
-  FROM passos pass
-  JOIN (
-    SELECT Usuario_fk
-    FROM passos
-    GROUP BY Usuario_fk
-  ) ultima ON pass.Usuario_fk = ultima.Usuario_fk 
-  JOIN usuario u ON pass.Usuario_fk = u.idUsuario group by nome;
-  `;
+  SELECT 
+	(CASE WHEN passo1 < 5 THEN 1 ELSE 0 END +
+     CASE WHEN passo2 < 5 THEN 1 ELSE 0 END +
+     CASE WHEN passo3 < 5 THEN 1 ELSE 0 END +
+     CASE WHEN passo4 < 5 THEN 1 ELSE 0 END +
+     CASE WHEN passo5 < 5 THEN 1 ELSE 0 END +
+     CASE WHEN passo6 < 5 THEN 1 ELSE 0 END +
+     CASE WHEN passo7 < 5 THEN 1 ELSE 0 END +
+     CASE WHEN passo8 < 5 THEN 1 ELSE 0 END) AS passos_menores_que_5
+FROM passos 
+ORDER BY idPasso desc limit 1;';`
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
@@ -84,7 +78,6 @@ function KPIs() {
 module.exports = {
   buscarResultadoGraficoLine,
   buscarResultadoGraficoBar,
-  buscarMedidasEmTempoReal,
   ranking,
-  KPIs
+  buscarKPIs
 }

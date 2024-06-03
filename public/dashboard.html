@@ -17,7 +17,7 @@
 
 <!-- <body onload=" atualizarFeed()"> -->
 
-<body onload="obterDadosGraficoBar(), validarSessao(), listar(), obterDadosGrafico2()">
+<body onload="obterDadosGraficoBar(), validarSessao(), listar(), obterDadosGraficoLine()">
   <!--  inicio do menu da dashboard  -->
 
   <div class="menu">
@@ -126,143 +126,144 @@
   </div>
 </body>
 <script>
-  dadosKPI1 = sessionStorage.VEZES_CONCLUIDO;
-  d_usuario = sessionStorage.NOME_USUARIO
+  d_usuario = sessionStorage.NOME_USUARIO;
+  let graficoLine;
+  let graficoBar;
 
-  const ctx = document.getElementById(`qtdDuvidasAltas`);
 
-let graficoBar = new Chart(ctx, {
-type: 'bar',
-data: {
-  labels: ['passo1', "passo2", "passo3", "passo4", "passo5", "passo6", "passo7", "passo8"],
-  datasets: [{
-    label: 'vezes em dúvida',
-    data: [],
-    // fill: false,
-    backgroundColor:
-      '#fd2828'
-    ,
-    borderColor: '#fd2828',
-    tension: 0.1
-  }]
-},
-responsive: true,
-options: {
-  responsive: true,
-  plugins: {
-    legend: {
-      // position: 'right',
-
-      fontColor: '#000' // Cor do texto dos rótulos da legenda
-
-    },
-  }
-}
-});
-
-const ctx2 = document.getElementById(`qtdDuvidasBaixas`);
-
-    let graficoLine = new Chart(ctx2, {
-    type: 'line',
-    data: {
-      labels: ['passo1', "passo2", "passo3", "passo4", "passo5", "passo6", "passo7", "passo8"],
-      datasets: [{
-        label: 'vezes em dúvida',
-        data: [],
-        backgroundColor: '#000',
-        borderColor: '#000',
-        tension: 0.1
-      }]
-    },
-    responsive: true,
-    options: {
-      responsive: true,
-      plugins: {}
-    }
-    });
- 
   function obterDadosGraficoBar() {
     fetch(`/medidas/buscarResultadoGraficoBar/${sessionStorage.ID_USUARIO}`, {
       method: "GET"
     }).then(function (resposta) {
         if (resposta.ok) {
-          resposta.json().then(function (data) {
-            console.log(data)
-            graficoBar.data.datasets[0].data = [
-              data[0].passo1,
-              data[0].passo2,
-              data[0].passo3,
-              data[0].passo4,
-              data[0].passo5,
-              data[0].passo6,
-              data[0].passo7,
-              data[0].passo8
-            ];
+          return resposta.json();
             graficoBar.update();
             ;
-          })
         } else {
 
           console.log("Houve um erro ao tentar realizar o login!");
         }
 
-      }).catch(function (erro) {
+      })
+      .then(function (data) {
+         if (data.length === 0) {
+                console.warn("Nenhum resultado encontrado");
+                return;
+                }
+
+                atualizarGraficoBar(data);
+            })
+      .catch(function (erro) {
         console.log(erro);
       })
 
     return false;
   }
 
-  function obterDadosGrafico2() {
+  function atualizarGraficoBar(dados) {
+        console.log("Dados recebidos para o gráfico de Barra:", dados);
+
+        const ctx = document.getElementById(`qtdDuvidasAltas`);
+       
+        if (graficoBar) {
+          graficoBar.destroy();
+        }
+        
+        const duvidasPassos = Object.values(dados[0]).map(Number); 
+        const passos = ['passo1', "passo2", "passo3", "passo4", "passo5", "passo6", "passo7", "passo8"];
+
+          graficoBar = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['passo1', "passo2", "passo3", "passo4", "passo5", "passo6", "passo7", "passo8"],
+            datasets: [{
+              label: 'vezes em dúvida',
+              data: duvidasPassos,
+
+              backgroundColor:
+                '#fd2828'
+              ,
+              borderColor: '#fd2828',
+              tension: 0.1
+            }]
+          },
+          responsive: true,
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                fontColor: '#000' 
+              },
+            }
+          }
+          });
+              }
+
+              obterDadosGraficoBar();
+              setInterval(obterDadosGraficoBar, 5000);
+
+  function obterDadosGraficoLine() {
     fetch(`/medidas/buscarResultadoGraficoLine/${sessionStorage.ID_USUARIO}`, { 
       cache: 'no-store' 
          }).then(function (resposta) {
         if (resposta.ok) {
-          resposta.json().then(function (data) {
-            console.log(data)
-            graficoLine.data.datasets[0].data = [
-              data[0].passo1,
-              data[0].passo2,
-              data[0].passo3,
-              data[0].passo4,
-              data[0].passo5,
-              data[0].passo6,
-              data[0].passo7,
-              data[0].passo8
-            ];
-            graficoLine.update();
-
+          return resposta.json();
+            graficoBar.update();
             ;
-          })
         } else {
 
           console.log("Houve um erro ao tentar realizar o login!");
         }
 
-      }).catch(function (erro) {
+      })
+      .then(function (data) {
+         if (data.length === 0) {
+                console.warn("Nenhum resultado encontrado");
+                return;
+                }
+
+                atualizarGraficoLine(data);
+            })
+      .catch(function (erro) {
         console.log(erro);
       })
+
     return false;
   }
 
+  function atualizarGraficoLine(dados) {
+    console.log("Dados recebidos para o gráfico de Linha:", dados);
+    
+       const ctx2 = document.getElementById(`qtdDuvidasBaixas`);
+       
+        if (graficoLine) {
+          graficoLine.destroy();
+        }
+       
+        const duvidasPassos = Object.values(dados[0]).map(Number);
+        const passos2 = ['passo1', "passo2", "passo3", "passo4", "passo5", "passo6", "passo7", "passo8"];
 
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+              graficoLine = new Chart(ctx2, {
+                type: 'line',
+                data: {
+                  labels: passos2,
+                  datasets: [{
+                    label: 'vezes em dúvida',
+                    data: duvidasPassos,
+                    backgroundColor: '#000',
+                    borderColor: '#000',
+                    tension: 0.1
+                  }]
+                },
+                responsive: true,
+                options: {
+                  responsive: true,
+                  plugins: {}
+                }
+                });
+                }
+              obterDadosGraficoLine();
+              setInterval(obterDadosGraficoLine, 5000);
 
 
   const ranking = [];
@@ -270,43 +271,63 @@ const ctx2 = document.getElementById(`qtdDuvidasBaixas`);
     fetch("/medidas/ranking", {
       method: "GET",
     })
-      .then(function (resposta) {
-        if (!resposta.ok) {
-          throw new Error('Erro ao recuperar o ranking');
+    .then(function (resposta) {
+                if (resposta.ok) {
+                    return resposta.json();
+                } else {
+                    throw new Error("Houve um erro ao tentar recuperar o ranking");
+                }
+            })
+            .then(function (ranking) {
+                if (ranking.length === 0) {
+                    console.warn("Nenhum resultado encontrado");
+                    return;
+                }
+
+                atualizarRanking(ranking);
+            })
+            .catch(function (erro) {
+                console.error(`#ERRO: ${erro}`);
+            });
+    }
+  function atualizarRanking(ranking) {
+
+      const nomeUsuario = sessionStorage.NOME_USUARIO
+      let posicaoUsuario = 0
+      //reordena do maior para o menor (sort() = ornagina os elementos do arraw conforme a função dada)
+      ranking.sort((a, b) => b.pontuacao - a.pontuacao);
+
+      const corpoTabela = document.getElementById('corpoTabela');
+      corpoTabela.innerHTML = '';
+
+      //forEach() é usado para iterar sobre cada entrada no ranking ordenado
+      ranking.forEach((resultado, indice) => {
+
+        if(resultado.usuario == sessionStorage.NOME_USUARIO){
+          dadosKPI1.innerHTML = resultado.pontuacao;
         }
-        return resposta.json();
-      })
-      .then((ranking) => {
-        console.log('Dados do ranking recebidos com sucesso:', ranking);
-        preencherRanking(ranking);
-      })
-      .catch(function (erro) {
-        console.error(`#ERRO: ${erro.message}`);
+          if (indice < 3) {
+              const valorLinha = document.createElement('div');
+              valorLinha.classList.add('linha');
+              valorLinha.innerHTML = `
+        <div class="placar">${indice + 1}º</div>
+        <div class="placar">${resultado.usuario}</div>
+        <div class="placar">${resultado.pontuacao} pontos</div>
+      `;
+              corpoTabela.innerHTML += valorLinha.outerHTML;
+          }
       });
-  }
-  function preencherRanking(ranking) {
-    //reordena do maior para o menor (sort() = ornagina os elementos do arraw conforme a função dada)
-    ranking.sort((a, b) => b.pontuacao - a.pontuacao);
+      console.log('Atualizou')
+      for (i = 0; i < ranking.length; i++) {
+          if (ranking[i].usuario == nomeUsuario) {
+              posicaoUsuario = i
+              break;
+          }
+      }
+    }
 
-    const corpoTabela = document.getElementById('corpoTabela');
-    corpoTabela.innerHTML = '';
-
-    //forEach() é usado para iterar sobre cada entrada no ranking ordenado
-    ranking.forEach((resultado, indice) => {
-
-
-      if(indice < 3){
-      const valorLinha = document.createElement('div');
-      valorLinha.classList.add('linha');
-      valorLinha.innerHTML = `
-            <div class="placar">${indice + 1}º</div>
-            <div class="placar">${resultado.usuario}</div>
-            <div class="placar">${resultado.pontuacao} pontos</div>
-      
-        `;
-      corpoTabela.innerHTML += valorLinha.outerHTML;
-    }});
-  }
+listar();
+setInterval(listar, 5000)
 
 
 </script>

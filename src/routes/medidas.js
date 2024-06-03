@@ -12,8 +12,8 @@ router.get("/buscarResultadoGraficoLine/:idJogador", function (req, res) {
 });
 
 
-router.get("/tempo-real", function (req, res) {
-    medidaController.buscarMedidasEmTempoReal(req, res);
+router.get("/KPIs", function (req, res) {
+    medidaController.buscarKPIs(req, res);
 })
 router.get("/ranking", function (req, res) {
     medidaController.ranking(req, res);
