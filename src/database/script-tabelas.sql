@@ -24,14 +24,16 @@ create table passos(
     constraint usuario_fk foreign key (Usuario_fk) references usuario(idUsuario)  
 );
 select * from usuario;
-SELECT * FROM passos WHERE Usuario_fk = 1 ORDER BY idPasso DESC LIMIT 8;
-SELECT 
-    passo1, passo2, passo3, passo4, passo5, passo6, 
-    passo7, passo8, qtdVezesConcluido, PassosEmDuvida, PassosSemDuvida
-                    FROM passos
-                    WHERE Usuario_fk = 1
-                    ORDER BY idPasso DESC LIMIT 10;
-SELECT  passo1, passo2, passo3, passo4, passo5, passo6, 
-                    passo7, passo8, qtdVezesConcluido, PassosEmDuvida, PassosSemDuvida, MediadeDuvida
-                        FROM passos WHERE Usuario_fk = 1
-                    ORDER BY idPasso DESC LIMIT 10;
+select * from passos;
+
+ SELECT 
+	(CASE WHEN passo1 < 5 THEN 1 ELSE 0 END +
+     CASE WHEN passo2 < 5 THEN 1 ELSE 0 END +
+     CASE WHEN passo3 < 5 THEN 1 ELSE 0 END +
+     CASE WHEN passo4 < 5 THEN 1 ELSE 0 END +
+     CASE WHEN passo5 < 5 THEN 1 ELSE 0 END +
+     CASE WHEN passo6 < 5 THEN 1 ELSE 0 END +
+     CASE WHEN passo7 < 5 THEN 1 ELSE 0 END +
+     CASE WHEN passo8 < 5 THEN 1 ELSE 0 END) AS passos_menores_que_5
+FROM passos where Usuario_fk = 2
+ORDER BY idPasso desc limit 1;

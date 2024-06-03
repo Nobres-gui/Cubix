@@ -55,10 +55,9 @@ function ranking() {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
-function buscarKPIs() {
+function buscarKPIs(id) {
 
-  var instrucaoSql = `
-  SELECT 
+  var instrucaoSql = ` SELECT 
 	(CASE WHEN passo1 < 5 THEN 1 ELSE 0 END +
      CASE WHEN passo2 < 5 THEN 1 ELSE 0 END +
      CASE WHEN passo3 < 5 THEN 1 ELSE 0 END +
@@ -66,9 +65,9 @@ function buscarKPIs() {
      CASE WHEN passo5 < 5 THEN 1 ELSE 0 END +
      CASE WHEN passo6 < 5 THEN 1 ELSE 0 END +
      CASE WHEN passo7 < 5 THEN 1 ELSE 0 END +
-     CASE WHEN passo8 < 5 THEN 1 ELSE 0 END) AS passos_menores_que_5
-FROM passos 
-ORDER BY idPasso desc limit 1;';`
+     CASE WHEN passo8 < 5 THEN 1 ELSE 0 END) AS duvidas
+FROM passos where Usuario_fk = '${id}'
+ORDER BY idPasso desc limit 1;`
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);

@@ -3,11 +3,13 @@ var medidaModel = require("../models/medidaModel");
 
 function buscarKPIs(req, res) {
 
+    var idUsuario = req.params.idUsuario;
+
     console.log(`controller buscando os resultados do jogador`);
 
-    medidaModel.buscarResultadoGraficoBar(idJogador).then(function (resultado) {
+    medidaModel.buscarKPIs(idUsuario).then(function (resultado) {
         if (resultado.length > 0) {
-            res.status(200).json(resultado); /*resposta que o bd traz*/
+            res.status(200).json(resultado);
         } else {
             res.status(204).send("Nenhum resultado encontrado!")
         }
@@ -22,11 +24,11 @@ function buscarKPIs(req, res) {
 
 function buscarResultadoGraficoBar(req, res) {
 
-    var idJogador = req.params.idJogador;
+    var idUsuario = req.params.idUsuario;
 
     console.log(`controller buscando os resultados do jogador`);
 
-    medidaModel.buscarResultadoGraficoBar(idJogador).then(function (resultado) {
+    medidaModel.buscarResultadoGraficoBar(idUsuario).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado); /*resposta que o bd traz*/
         } else {
@@ -41,11 +43,11 @@ function buscarResultadoGraficoBar(req, res) {
 
 function buscarResultadoGraficoLine(req, res) {
 
-    var idJogador = req.params.idJogador;
+    var idUsuario = req.params.idUsuario;
 
     console.log(`controller buscando os resultados do jogador`);
 
-    medidaModel.buscarResultadoGraficoLine(idJogador).then(function (resultado) {
+    medidaModel.buscarResultadoGraficoLine(idUsuario).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado); /*resposta que o bd traz*/
         } else {

@@ -17,7 +17,7 @@
 
 <!-- <body onload=" atualizarFeed()"> -->
 
-<body onload="obterDadosGraficoBar(), validarSessao(), listar(), obterDadosGraficoLine()">
+<body onload="obterDadosGraficoBar(), validarSessao(), listar(), obterDadosGraficoLine(), obterDadosKPIs()">
   <!--  inicio do menu da dashboard  -->
 
   <div class="menu">
@@ -36,19 +36,16 @@
     <div class="btn-navbar">
       <div class="flexNavBar">
         <a class="outrasPaginas" href="./index.html">
-          <img src="IMG/Dashboard/configuracoes.png" alt="" />
           Início
         </a>
 
         <a class="outrasPaginas" href="dashboard.html">
-          <img src="IMG/Dashboard/painel-de-controle-verde.png" alt="" />
           Gráficos
         </a>
 
 
 
         <a class="outrasPaginas" href="./ComoMontar.html">
-          <img src="IMG/Dashboard/sino.png" alt="" />
           Monte Novamente
         </a>
 
@@ -65,11 +62,11 @@
   <div class="dash">
     <div id="graf1" class="div_graficos">
       <div class="graficoBar">
-        <span>Vezes em dúvida de nivel alto (1 e 2)</span>
+        <span>Total de dúvida de nivel alto (1 e 2)</span>
         <canvas id="qtdDuvidasAltas"></canvas>
       </div>
       <div id="graf???" class="div_grafico">
-        <span>Vezes em dúvida de nivel médio (3 e 4)</span>
+        <span>Total de dúvida de nivel médio (3 e 4)</span>
         <canvas id="qtdDuvidasBaixas"></canvas>
       </div>
     </div>
@@ -77,29 +74,29 @@
 
       <div class="div_KPIs">
         <div class="div_KPI" id="KPI1">
-          <span class="spanTitulo1"> Vezes que concluído o passo a passo</span>
+          <span class="spanTitulo1"> Vezes que concluiu o passo a passo</span>
           <div class="div_KPI1content">
             <span class="spanPorcentagemKPI1"><span id="dadosKPI1">?</span></span>
           </div>
         </div>
         
         <div class="div_KPI" id="KPI2">
-          <span class="spanTitulo2"> Total de passos sem dúvida</span>
+          <span class="spanTitulo2">Passos sem dúvidas no ultimo passo a passo</span>
           <div class="div_KPI2content">
             <span class="spanSemDuvidaContent" id="dadosKPI2">?</span>
             <div class="divTextoKPI2">
             </div>
           </div>
         </div>
-        <div class="div_KPI" id="KPI3"><span class="spanTitulo3">Total de passos com dúvida</span>
+        <div class="div_KPI" id="KPI3"><span class="spanTitulo3">Dúvidas no ultimo passo a passo</span>
           <div class="div_KPI3content">
             <div class="divTextoKPI3">
-              <div id="span_media_temp" class="spanComDuvidaContent" id="dadosKPI3">?</div>
+              <div id="span_media_temp" class="spanComDuvidaContent"><span id="dadosKPI3">?</span></div>
             </div>
           </div>
         </div>
         <div class="div_KPI" id="KPI4">
-          <span class="spanTitulo4">Porcentagem de dúvida por conclusão do passo</span>
+          <span class="spanTitulo4">Média de dúvida no ultimo passo a passo</span>
           <div class="div_KPI4content">
             <div class="divTextoKPI4">
               <span id="span_media_lumi" class="qtdPorcentagemDuvida"><span  id="dadosKPI4">?</span>/8</span>
@@ -130,6 +127,43 @@
   let graficoLine;
   let graficoBar;
 
+  function obterDadosKPIs() {
+    fetch(`/medidas/buscarKPIs/${sessionStorage.ID_USUARIO}`, {
+      method: "GET"
+    }).then(function (resposta) {
+        if (resposta.ok) {
+          return resposta.json();
+
+        } else {
+
+          console.log("Houve um erro ao tentar realizar o login!");
+        }
+
+      })
+      .then(function (data) {
+         if (data.length === 0) {
+                console.warn("Nenhum resultado encontrado");
+                return;
+                }
+
+                atualizarKPIs(data);
+            })
+      .catch(function (erro) {
+        console.log(erro);
+      })
+
+
+  }
+  function atualizarKPIs(valor) {
+    const Passos = Object.values(valor[0]).map(Number); 
+    console.log("Dados recebidos para as KPIs:", valor);
+
+    dadosKPI2.innerHTML = 8 - Passos;
+    dadosKPI3.innerHTML = Passos;
+    dadosKPI4.innerHTML = Passos;
+  }
+
+  
 
   function obterDadosGraficoBar() {
     fetch(`/medidas/buscarResultadoGraficoBar/${sessionStorage.ID_USUARIO}`, {
@@ -190,11 +224,8 @@
           responsive: true,
           options: {
             responsive: true,
-            plugins: {
-              legend: {
-                fontColor: '#000' 
-              },
-            }
+            animation: false,
+            plugins: {}
           }
           });
               }
@@ -257,6 +288,7 @@
                 },
                 responsive: true,
                 options: {
+                  animation: false,
                   responsive: true,
                   plugins: {}
                 }
@@ -312,7 +344,7 @@
               valorLinha.innerHTML = `
         <div class="placar">${indice + 1}º</div>
         <div class="placar">${resultado.usuario}</div>
-        <div class="placar">${resultado.pontuacao} pontos</div>
+        <div class="placar">${resultado.pontuacao} vezes</div>
       `;
               corpoTabela.innerHTML += valorLinha.outerHTML;
           }
