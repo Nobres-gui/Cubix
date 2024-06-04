@@ -34,11 +34,12 @@
       </div>
     </div>
 
-    <div class="modal1 modal">
+    <div class="modalL1 modal">
       <div class="contentmodal" id="modal_erroLogin">
+        OS CAMPOS DEVEM SER PREENCHIDOS
       </div>
     </div>
-    <div class="modal2 modal">
+    <div class="modalL2 modal">
       <div class="contentmodal" id="modal_exitoLogin">
           USUÁRIO AUTENTICADO!
       </div>
@@ -148,11 +149,11 @@
   function validarLogin(numResposta) {
 
     // Esconde todos os modais
-    const modais = document.querySelectorAll('.modal');
+    const modais = document.querySelectorAll('.modalL');
     modais.forEach(modal => modal.style.display = 'none');
 
     // Exibe o modal correspondente
-    const modalSelecionado = document.querySelector(`.modal${numResposta}`);
+    const modalSelecionado = document.querySelector(`.modalL${numResposta}`);
     if (modalSelecionado) {
       modalSelecionado.style.display = 'block';
     }

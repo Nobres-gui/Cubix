@@ -72,10 +72,9 @@ body{
 	position: relative;
 	bottom: 30px;
 	background-color: #fd2828;
-  }
-  
-  .sobreMim p {
-	text-align: justify;
+}
+.sobreMim p {
+  text-align: justify;
 	display: flex;
 	align-items:self-start;
 	justify-content: center;
@@ -85,6 +84,7 @@ body{
 	flex-direction: column;
 	width: 60%;
 	height: 40vh;
+  font-size: 19px;
   }
   
   .sobreMim-foto {
