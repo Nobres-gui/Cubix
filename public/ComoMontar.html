@@ -583,8 +583,6 @@
         const duvida7 = document.querySelector('input[name="duvida7"]:checked').value;
         const duvida8 = document.querySelector('input[name="duvida8"]:checked').value;
 
-        vezesConcluido += 1
-
         fetch("/passos/cadastrarRespostas", {
             method: "POST",
             headers: {

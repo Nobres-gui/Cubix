@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+*{
+  text-decoration: none;
+}
 body{
     margin: 0;
-    height: 365vh;
+    height: 100vh;
     width: 100%;
     font-family: 'Poetsen One';
     overflow-x: hidden;
-	background-color: #4079fd;
+	background-color: whitesmoke;
+
 }
 .nav {
     height: 90px;
@@ -68,113 +72,60 @@ img{
 	  pointer-events: none
   }
   /* The actual linhaTempo (the vertical ruler) */
-  .linhaTempo {
-	top: 3rem;
-	position: relative;
-	max-width: 1200px;
-	margin: 0 auto;
-  }
+  .patterns{
+    display: flex;
+    flex-direction: column;
   
-  /* The actual linhaTempo (the vertical ruler) */
-  .linhaTempo::after {
-	content: '';
-	position: absolute;
-	width: 6px;
-	background-color: rgb(255, 173, 97);
-	top: 0;
-	bottom: 0;
-	left: 50%;
-	margin-left: -3px;
   }
-  
-  /* Card around content */
-  .card {
-	padding: 10px 40px;
-	position: relative;
-	background-color: inherit;
-	width: 26.3%;
+  .pattern1-4{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
   }
-  
-  /* The circles on the linhaTempo */
-  .card::after {
-	  content: '';
-	  position: absolute;
-	  width: 25px;
-	  height: 25px;
-	  right: 62px;
-	  background-color: #fffa66;
-	  border: 4px solid #ff5e5e;
-	  top: 15px;
-	  border-radius: 50%;
-	  z-index: 1;
+  .pattern5-8{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
   }
-  
-  /* Place the card to the left */
-  .posicaoEsq {
-	  left: 17.7rem;
+  .pattern8-10{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
   }
-  
-  /* Place the card to the right */
-  .posicaoDir {
-	left: 50.5%;
-  }
-  
-  /* Add arrows to the left card (pointing right) */
-  .posicaoEsq::before {
-	content: " ";
-	height: 0;
-	position: absolute;
-	top: 22px;
-	width: 0;
-	z-index: 1;
-	right: 6.8rem;
-	border: medium solid #ffffff;
-	border-width: 10px 0 10px 10px;
-	border-color: transparent transparent transparent #ffffff;
-  }
-  
-  /* Add arrows to the right card (pointing left) */
-  .posicaoDir::before {
-	content: " ";
-	height: 0;
-	position: absolute;
-	top: 22px;
-	width: 0;
-	z-index: 1;
-	left: 30px;
-	border: medium solid white;
-	border-width: 10px 10px 10px 0;
-	border-color: transparent #ffffff transparent transparent;
-  }
-  
-  /* Fix the circle for cards on the right side */
-  .posicaoDir::after {
-	left: -23px;
-  }
-  
-  /* The actual content */
-  .conteudoCard {
-	  /* padding: 20px 30px;  */
-	  background-color: #ffffff;
-	  /* position: relative; */
-	  display: flex;
-	  border-radius: 6px;
-	  align-items: center;
-	  justify-content: center;
-	  flex-direction: column;
-	  width: 238px;
-	  height: 218px;
-	  transition: 0.3s all ease;
-  }
-  .conteudoCard:hover{
-	  background-color: #86fe73;
-  }
+  .bordasCard {
+    border: 2px solid #000;
+    /* border-radius: 10px; */
+    }
+    .bordasCard img {
+    width: 100%;
+    height: auto;
+    }
+    .bordasCard:hover {
+    border: 2px solid #ff463c;
+    }
+    .textCard {
+    padding: 10px;
+    font-size: 15px;
+    text-align: center;
+    }
+    .pattern {
+    padding: 0 6px;
+    float: left;
+    width: 15%;
+    margin: 5px;
+    }
   footer {
     width: 100%;
     height: 170px;
     background-color: #484848;
     padding: 40px;
     display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
     top: 15rem;
   }
@@ -184,139 +135,55 @@ img{
   .column1 {
     margin-left: 10px;
     width: 440px;
-    border-right: solid;
+    display: flex;
+    flex-direction: column;
   }
 
   .column1 h2{
     display: flex;
     align-items: center;
     font-size: 27px;
+    color: #ffff33;
   }
 
   .column1 img{
-    border-radius: 100%;
+    /* border-radius: 100%; */
     margin-right: 3px;
-    height: 50px;
+    height: 65px;
     width: 50px;
   }
-
-  /* Detalhes da parte central do Footer */
-  .column2{
-    width: 302px;
-    border-right: solid;
-    margin-left: 20px;
+.column1 .logo{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.menuLogo a{
+  color: #ffffff;
+}
+  .logos{
+    display: flex;
     flex-direction: column;
-    display: flex;
-  }
-
-  .column2 h2{
-    margin-left: 20px;
-  }
-
-  .column2 a{
-    margin-left: 20px;
-    text-decoration:none;
-    color: black;
-    margin-bottom: 5px;
-  }
-
-  /* Detalhes da parte direita do Footer */
-  .column3{
-    margin-left: 10px;
-    width: 440px;
-    display: flex;
-  }
-
-  .column3 h2{
-    margin-left: 10px;
-  }
-
-  .column3 p{
-    display: flex;
     align-items: center;
-    margin-left: 10px;
-    width: 330px;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
   }
-
-  .column3 a{
-    text-decoration:none;
-    margin-left: 10px;
-    color: black;
-  }
-
-
-  /* Tamanho dos ícones (facebook, instagram, twitter, linkedin) */
   .logos .icone1{
-    filter:invert();
     height: 34px;
     width: 34px;
   }
   .logos .icone2{
-    filter:invert();
     height: 32px;
     width: 32px;
   }
   .logos .icone3{
-    filter:invert();
     height: 33px;
     width: 32px;
   }   
   .logos .icone4{
-    filter:invert();
     height: 32px;
     width: 32px;
   }
 
-  /* Ícones localização, telefone e email */
-  .icone5{
-    filter:invert();
-    height: 29px;
-    width: 29px;
-  }
-  .icone6{
-    filter:invert();
-    height: 29px;
-    width: 29px;
-  }
-  .icone7{
-    filter:invert();
-    height: 32px;
-    width: 32px;
-  }
-
-  /* Animação dos ícones Footer*/
-  .logos .icone1:hover {
-    transform: translateY(-5px);
-    transition: all 0.4s;
-  }
-  .logos .icone2:hover {
-    transform: translateY(-5px);
-    transition: all 0.4s;
-  }
-  .logos .icone3:hover {
-    transform: translateY(-5px);
-    transition: all 0.4s;
-  }
-  .logos .icone4:hover {
-    transform: translateY(-5px);
-    transition: all 0.4s;
-  } 
-  .logos2 .icone5:hover {
-    transform: translateY(-5px);
-    transition: all 0.4s;
-  } 
-  .logos2 .icone6:hover {
-    transform: translateY(-5px);
-    transition: all 0.4s;
-  } 
-  .logos2 .icone7:hover {
-    transform: translateY(-5px);
-    transition: all 0.4s;
-  } 
-
-  /* Animação do menu */
-  .column2 a:hover{
-    transform: translateX(5px);
-    transition: all 0.4s;
-    
-  }
