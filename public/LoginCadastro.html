@@ -1,141 +1,194 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Entra já</title>
-	<link rel="stylesheet" type="text/css" href="./Css/LoginCadastro.css">
-	<link rel="shortcut icon" href="/IMG/LogoShortcut.png">
+  <title>Entra já</title>
+  <link rel="stylesheet" type="text/css" href="./Css/LoginCadastro.css">
+  <link rel="shortcut icon" href="/IMG/LogoShortcut.png">
   <script src="./JS/sessao.js"></script>
 </head>
+
 <body>
-	<!-- <a href="Home.html" class="setaVoltar">
+  <!-- <a href="Home.html" class="setaVoltar">
 		<img class="img_seta" src="/IMG/setaVoltar.png" alt=""/>
 		<span>Voltar</span>
 	</a> -->
   <header>
-		<nav class="nav">
-            <a href="index.html" class="navPaginas" id="pagina1">Início</a>
-            <a href="SobreMim.html" class="navPaginas" id="pagina2">Sobre mim</a>
-			<a href="index.html" class="navPaginas" ><img src="./IMG/Logo.png" class="imgLogo" alt="LOGO"></a>
-			<a href="Tipos.html" class="navPaginas" id="pagina3">Tipos</a>
-			<a href="ComoMontar.html" class="navPaginas" id="pagina4">Como Montar</a>
-        </nav>
-</header>
-	<section class="window">
-	<div class="container">  	
-		<input type="checkbox" id="alterarPage" name="checkbox" checked aria-hidden="true">
+    <nav class="nav">
+      <a href="index.html" class="navPaginas" id="pagina1">Início</a>
+      <a href="SobreMim.html" class="navPaginas" id="pagina2">Sobre mim</a>
+      <a href="index.html" class="navPaginas"><img src="./IMG/Logo.png" class="imgLogo" alt="LOGO"></a>
+      <a href="Tipos.html" class="navPaginas" id="pagina3">Tipos</a>
+      <a href="ComoMontar.html" class="navPaginas" id="pagina4">Como Montar</a>
+    </nav>
+  </header>
+  <section class="window">
 
-			<div class="cadastro">
-				<form>
-					<label for="alterarPage" aria-hidden="true">Cadastre-se</label>
-					<div class="flexCadastro">
-          <input type="text" id="input_nomeCadastro" placeholder="Nome" required="">
-          <div id="mensagem_erro"></div>
-					<input type="email" id="input_emailCadastro" placeholder="Email" required="">
-          <div id="mensagem_erro"></div>
-          <input type="password" id="input_senhaCadastro" placeholder="Senha" required="">
-           <div id="mensagem_erro"></div>
-					<input type="password" id="input_confirmarSenha" placeholder="Confirmar Senha" required="">
-          <div id="mensagem_erro"></div>
-					<a class="btnCadastrar" onclick="cadastrar()">CADASTRAR</a>
-					<div id="div_aguardarCadastro" class="loading-div">
-						<img src="./IMG/aguarde-pink2.gif" id="loading-gif" />
-					  </div>
-          </div>
-				</form>
-			</div>
+    <div class="modal1 modal">
+      <div class="contentmodal" id="modal_erro">
+      </div>
+    </div>
+    <div class="modal2 modal">
+      <div class="contentmodal" id="modal_exito">
+        CADASTRO REALIZADO COM SUCESSO!
+      </div>
+    </div>
 
-			<div class="login">
-				<form>
-					<label for="alterarPage" aria-hidden="true">Login</label>
-          <div class="flexLogin">
-					<input type="email" id="input_emailEntrar" placeholder="Email" required="">
-          <div id="mensagem_erro"></div>
-					<input type="password" id="input_senhaEntrar" placeholder="Senha" required="">
-          <div id="mensagem_erro"></div>
-					<a class="btnLogin" onclick="entrar()">LOGIN</a>
-					<div id="div_aguardarLogin" class="loading-div">
-						<img src="./IMG/aguarde-pink2.gif" id="loading-gif" />
-					  </div>
+    <div class="modal1 modal">
+      <div class="contentmodal" id="modal_erroLogin">
+      </div>
+    </div>
+    <div class="modal2 modal">
+      <div class="contentmodal" id="modal_exitoLogin">
+          USUÁRIO AUTENTICADO!
+      </div>
+    </div>
+
+    <div class="container">
+      <input type="checkbox" id="alterarPage" name="checkbox" checked aria-hidden="true">
+
+      <div class="cadastro">
+        <form>
+          <label for="alterarPage" aria-hidden="true">Cadastre-se</label>
+          <div class="flexCadastro">
+            <input type="text" id="input_nomeCadastro" placeholder="Nome" required="">
+            <input type="email" id="input_emailCadastro" placeholder="Email" required="">
+            <input type="password" id="input_senhaCadastro" placeholder="Senha" required="">
+
+            <input type="password" id="input_confirmarSenha" placeholder="Confirmar Senha" required="">
+            <a class="btnCadastrar" onclick="cadastrar()">CADASTRAR</a>
+            <div id="div_aguardarCadastro" class="loading-div">
+              <img src="./IMG/aguarde-pink2.gif" id="loading-gif" />
             </div>
-				</form>
-			</div>
-	</div>
-</section>
+          </div>
+        </form>
+      </div>
+
+      <div class="login">
+        <form>
+          <label for="alterarPage" aria-hidden="true">Login</label>
+          <div class="flexLogin">
+            <input type="email" id="input_emailEntrar" placeholder="Email" required="">
+            <input type="password" id="input_senhaEntrar" placeholder="Senha" required="">
+            <a class="btnLogin" onclick="entrar()">LOGIN</a>
+            <div id="div_aguardarLogin" class="loading-div">
+              <img src="./IMG/aguarde-pink2.gif" id="loading-gif" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
 </body>
+
 </html>
 <script>
-	function entrar() {
+  function entrar() {
     aguardarLogin();
-    
-        var emailVar = input_emailEntrar.value;
-        var senhaVar = input_senhaEntrar.value;
 
-        if (emailVar == "" || senhaVar == "") {
-            // cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardarLogin();
-            return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
+    var senhaVar = input_senhaEntrar.value;
+    var emailVar = input_emailEntrar.value;
 
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
+    if (emailVar == "" || senhaVar == "") {
+      modal_erroLogin.innerHTML = "OS CAMPOS DEVEM SER PREENCHIDOS"
+      validarLogin(1)
+      return false;
+    }
+    else {
+      validarSessao(emailVar, senhaVar)
+    }
+  }
+  function validarSessao(emailVar, senhaVar) {
+    console.log("FORM LOGIN: ", emailVar);
+    console.log("FORM SENHA: ", senhaVar);
+    fetch("/usuarios/autenticar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+      })
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO entrar()!")
 
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar,
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
+      if (resposta.ok) {
+        console.log(resposta);
 
-            if (resposta.ok) {
-                console.log(resposta);
+        resposta.json().then(json => {
+          console.log(json);
+          console.log(JSON.stringify(json));
+          sessionStorage.EMAIL_USUARIO = json.email;
+          sessionStorage.NOME_USUARIO = json.nome;
+          sessionStorage.ID_USUARIO = json.id;
 
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    
 
-                    setTimeout(function () {
-                        window.location = "./ComoMontar.html";
-                    }, 2000); // apenas para exibir o loading
+          validarLogin(2)
 
-                });
+        });
 
-            } else {
+      } else {
 
-                console.log("Houve um erro ao tentar realizar o login!");
+        console.log("Houve um erro ao tentar realizar o login!");
 
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardarLogin();
+        resposta.text().then(texto => {
+          console.error(texto);
+          finalizarAguardarLogin(texto);
 
-                });
-            }
+        });
+      }
 
-        }).catch(function (erro) {
-            console.log(erro);
-        })
+    }).catch(function (erro) {
+      console.log(erro);
+    })
 
+    return false;
+  }
+  function validarLogin(numResposta) {
+
+    // Esconde todos os modais
+    const modais = document.querySelectorAll('.modal');
+    modais.forEach(modal => modal.style.display = 'none');
+
+    // Exibe o modal correspondente
+    const modalSelecionado = document.querySelector(`.modal${numResposta}`);
+    if (modalSelecionado) {
+      modalSelecionado.style.display = 'block';
+    }
+
+    if (numResposta == 1) {
+      setTimeout(function () {
+        sumirModal()
+        finalizarAguardarLogin();
         return false;
+      }, 4000)
     }
+    else (
+      setTimeout(function () {
+        setTimeout(function () {
+          window.location = "./dashboard.html";
+        }, 1500);
+        sumirModal()
+        finalizarAguardarLogin();
+        return false;
+      }, 1000)
+    )
+  }
 
-    function sumirMensagem() {
-        mensagem_erro.innerHTML = ""
-    }
-    
-	function cadastrar() {
-      aguardarCadastro();
+  function sumirModal() {
+    const modais = document.querySelectorAll('.modal');
+    modais.forEach(modal => modal.style.display = 'none');
+  }
+
+
+
+  let caracteresEspeciais = ['@', '.', '*', '#', '$', '&']
+  let letrasMaiusculas = ['A', 'B', 'C', 'D', 'E', 'F', 'G',
+    'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+
+  function cadastrar() {
+    aguardarCadastro();
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
@@ -143,42 +196,84 @@
     var emailVar = input_emailCadastro.value;
     var senhaVar = input_senhaCadastro.value;
     var confirmacaoSenhaVar = input_confirmarSenha.value;
-    
-    var indexarroba = emailVar.indexOf("@")
-    var indexponto = emailVar.indexOf(".")
+    let arrobaEmail = emailVar.indexOf('@')
+    let pontoEmail = emailVar.indexOf('.')
+    let validacaoSenha = false
 
-    if(indexarroba == -1 && indexponto == -1){
-      mensagem_erro.innerHTML = "Email inválido";
-      return false;}
-    if(senhaVar.length < 6){
-      mensagem_erro.innerHTML =  "Senha deve conter pelo menos 6 digitos";
-      return false;}
-    if(confirmacaoSenhaVar != senhaVar ){
-      mensagem_erro.innerHTML =  "Senhas não iguais";
 
-    }
-    if(nomeVar <= 1){
-      mensagem_erro.innerHTML =
-        "(Nome incorreto)";
-      return false;}
-    else if (
-      nomeVar == "" ||
+
+    if (nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == ""
     ) {
-      mensagem_erro.innerHTML =
-        "Campo em branco";
-
-      
-        finalizarAguardarCadastro();
+      modal_erro.innerHTML = "PREENCHA TODOS OS CAMPOS PARA CONTINUAR!"
+      validarSessaoCadastro(1)
+      return false;
+    }
+    if (pontoEmail == - 1 || arrobaEmail == -1) {
+      modal_erro.innerHTML = "O E-MAIL DEVE CONTER UM @ E UM '.'!"
+      validarSessaoCadastro(1)
+      return false;
+    }
+    if (senhaVar.length < 8) {
+      modal_erro.innerHTML = "A SENHA PRECISA CONTER NO MÍNIMO OITO CARACTÉRES!"
+      validarSessaoCadastro(1)
+      return;
+    } else if (senhaVar != confirmacaoSenhaVar) {
+      modal_erro.innerHTML = "SENHAS INCOMPATÍVEIS!"
+      validarSessaoCadastro(1)
       return false;
     } else {
-      setInterval(sumirMensagem, 5000);
-    }
-   
 
-    // Enviando o valor da nova input
+      for (let caractereAtual = 0; caractereAtual < caracteresEspeciais.length; caractereAtual++) {
+        if (senhaVar.indexOf(caracteresEspeciais[caractereAtual]) !== -1) {
+          validacaoSenha = true
+          break;
+        }
+      }
+      if (validacaoSenha == false) {
+        modal_erro.innerHTML = "A SENHA PRECISA CONTER AO MENOS UM CARACTER ESPECIAL!"
+        validarSessaoCadastro(1)
+        return false;
+      }
+
+      validacaoSenha = false;
+      for (let caractereAtual = 0; caractereAtual < letrasMaiusculas.length; caractereAtual++) {
+        if (senhaVar.indexOf(letrasMaiusculas[caractereAtual]) !== -1) {
+          validacaoSenha = true
+          break;
+        }
+      }
+      if (validacaoSenha == false) {
+        modal_erro.innerHTML = "A SENHA PRECISA CONTER UMA LETRA MAIUSCULA!"
+        validarSessaoCadastro(1)
+        return false;
+      }
+
+      validacaoSenha = false;
+      for (let numAtual = 0; numAtual <= 9; numAtual++) {
+        if (senhaVar.indexOf(numAtual) !== -1) {
+          validacaoSenha = true
+          break;
+        }
+      }
+      if (validacaoSenha == false) {
+        modal_erro.innerHTML = "A SENHA PRECISA CONTER UM NÚMERO!"
+        validarSessaoCadastro(1)
+        return false;
+      }
+
+    }
+    if (validacaoSenha == true) {
+      cadastrarUsuario(nomeVar, emailVar, senhaVar)
+    }
+  }
+
+
+
+  function cadastrarUsuario(nomeVar, emailVar, senhaVar) {
+
     fetch("/usuarios/cadastrar", {
       method: "POST",
       headers: {
@@ -196,15 +291,8 @@
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
+          validarSessaoCadastro(2)
 
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-          setTimeout(() => {
-            window.location = "loginCadastro.html";
-          }, "2000");
-          finalizarAguardarCadastro();
-          limparFormulario();
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
@@ -215,6 +303,42 @@
       });
 
     return false;
+  }
+
+  function validarSessaoCadastro(numResposta) {
+
+    // Esconde todos os modais
+    const modais = document.querySelectorAll('.modal');
+    modais.forEach(modal => modal.style.display = 'none');
+
+    // Exibe o modal correspondente
+    const modalSelecionado = document.querySelector(`.modal${numResposta}`);
+    if (modalSelecionado) {
+      modalSelecionado.style.display = 'block';
+    }
+
+    if (numResposta == 1) {
+      setTimeout(function () {
+        sumirModal()
+        finalizarAguardarCadastro();
+        return false;
+      }, 4000)
+    }
+    else (
+      setTimeout(function () {
+        modal_exito.innerHTML = "REDIRECIONANDO A TELA DE LOGIN..."
+        setTimeout(function () {
+          window.location = "./loginCadastro.html";
+        }, 3500);
+        finalizarAguardarCadastro();
+        return false;
+      }, 4000)
+    )
+  }
+
+  function sumirModal() {
+    const modais = document.querySelectorAll('.modal');
+    modais.forEach(modal => modal.style.display = 'none');
   }
 
 

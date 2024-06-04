@@ -32,7 +32,7 @@ function aguardarCadastro() {
     divAguardar.style.display = "flex";
 }
 
-function finalizarAguardarLogin() {
+function finalizarAguardarCadastro() {
     var divAguardar = document.getElementById("div_aguardarCadastro");
     divAguardar.style.display = "none";
 }
