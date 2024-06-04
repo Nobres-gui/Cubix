@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,20 +9,66 @@
     <script src="./JS/mudarPaginaAparecerModal.js"></script>
     <script src="./JS/sessao.js"></script>
 </head>
+
 <body onload="validarSessao()">
     <header>
         <nav class="nav">
             <a href="LoginCadastro.html" class="navPaginas" id="pagina1">Login</a>
             <a href="SobreMim.html" class="navPaginas" id="pagina2">Sobre mim</a>
-			<a href="index.html" class="navPaginas" ><img src="./IMG/Logo.png" class="imgLogo" alt="LOGO"></a>
-			<a href="Tipos.html" class="navPaginas" id="pagina3">Tipos</a>
-			<a href="ComoMontar.html" class="navPaginas" id="pagina4">Como Montar</a>
+            <a href="index.html" class="navPaginas"><img src="./IMG/Logo.png" class="imgLogo" alt="LOGO"></a>
+            <a href="Tipos.html" class="navPaginas" id="pagina3">Tipos</a>
+            <a href="ComoMontar.html" class="navPaginas" id="pagina4">Como Montar</a>
         </nav>
     </header>
-    
-    <div class="window1">
+    <a id="popupLink"> <img src="./IMG/interrogation-mark.png" alt="" style="    width: 50px; "></a>
 
-        
+    <div class="window1">
+        <div id="meuPopup" class="popup">
+            <div class="popup-content">
+                <span class="close-popup">x</span>
+                <table>
+                    <tr>
+                        <th>Sigla</th>
+                        <th>Movimento</th>
+                        <th>Sigla</th>
+                        <th>Movimento</th>
+                    </tr>
+                    <tr>
+                        <td> R</td>
+                        <td>Lado direito horário.</td>
+                        <td>L2</td>
+                        <td>Lado esquerdo 2x.</td>
+
+                    </tr>
+                    <tr>
+                        <td>R'</td>
+                        <td>Lado direito anti-horário</td>
+                        <td>D</td>
+                        <td>Base horário</td>
+                    </tr>
+                    <tr>
+                        <td>R2</td>
+                        <td>Lado direito 2x</td>
+                        <td>F</td>
+                        <td>Face da frente horário</td>
+                    </tr>
+                    <tr>
+                        <td>L</td>
+                        <td>Lado esquerda horário.</td>
+                        <td>B</td>
+                        <td>Face traseira horário</td>
+                    </tr>
+                    <tr>
+                        <td>L'</td>
+                        <td>Esquerda anti-horário.</td>
+                        <td>U</td>
+                        <td>Topo horário</td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+
         <section id="passo1">
             <div class="modal1">
                 <div class="contentModal">
@@ -38,23 +85,49 @@
                         <input type="radio" id="duvida1e" class="btn5" name="duvida1" value="5">
                         <label class="duvida5" for="duvida1e"></label> <br>
                     </div>
-                    <a  class="tirarModal" onclick="tirarModal(1)"></a>
+                    <a class="tirarModal" onclick="tirarModal(1)"></a>
                 </div>
             </div>
             <div class="pagina">
                 <div class="molduraImg">
                     <img src="./IMG/passo1.svg" alt="">
                 </div>
-                <div class="textPasso">
-                    <h3>Passo 1</h3>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam suscipit molestias asperiores!
+                <div class="flexPassoText">
+                    <div class="textPasso">
+                        1º PASSO: PREPARAR A CRUZ
+                    </div>
+                    <a class="botaoDuvida1" onclick="verModalDuvida(1)">Você achou dificil esse passo?</a>
                 </div>
-                <a class="botaoDuvida1" onclick="verModalDuvida(1)">Você achou dificil esse passo?</a>
             </div>
+            <div class="cards">
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo1/metodo-basico-cubo-magico-passo-1-01.webp" alt="">
+                    <span>Fórmula: R
+                        Essa é a situação mais básica de todas, onde basta você inserir o meio no topo do cubo com 1
+                        movimento.</span>
+                </div>
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo1/metodo-basico-cubo-magico-passo-1-01.webp" alt="">
+                    <span>Fórmula: F' R
+                        Perceba que o primeiro movimento apenas prepara o meio na lateral para ser inserido como o
+                        primeiro caso.</span>
+                </div>
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo1/metodo-basico-cubo-magico-passo-1-01.webp" alt="">
+                    <span>Fórmula: F U' R
+                        Basicamente a mesma situação do caso anterior, porém com o meio no topo do cubo.</span>
+                </div>
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo1/metodo-basico-cubo-magico-passo-1-01.webp" alt="">
+                    <span>Fórmula: U' R
+                        Um caso muito comum, onde basta liberar o espaço girando o topo e depois inserir o meio.</span>
+                </div>
+            </div>
+
             <div class="contentProximoPasso1">
                 <div class="proximoPasso">
                     <a style="color: transparent;">⇠</a>
-                    <span> 01/08 </span>  
+                    <span> 01/08 </span>
                     <a class="btnAvancar" onclick="avancarPasso()">⇢</a>
                 </div>
             </div>
@@ -76,24 +149,40 @@
                         <input type="radio" id="duvida2e" class="btn5" name="duvida2" value="5">
                         <label class="duvida5" for="duvida2e"></label> <br>
                     </div>
-                    <a   class="tirarModal" onclick="tirarModal(2)"></a>
+                    <a class="tirarModal" onclick="tirarModal(2)"></a>
                 </div>
             </div>
             <div class="pagina">
                 <div class="molduraImg">
                     <img src="./IMG/passo2.svg" alt="">
                 </div>
-                <div class="textPasso">
-                    <h3>Passo 2</h3>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam suscipit molestias asperiores!
+                <div class="flexPassoText">
+                    <div class="textPasso">
+                        2º PASSO: FINALIZAR A CRUZ
+                    </div>
+                    <a class="botaoDuvida2" onclick="verModalDuvida(2)">Você achou dificil esse passo?</a>
                 </div>
-                <a  class="botaoDuvida2" onclick="verModalDuvida(2)">Você achou dificil esse passo?</a>
+            </div>
+            <div class="cards">
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo2/metodo-basico-cubo-magico-passo-2-01.webp" alt="">
+                    <span>Execute os movimentos U, U' ou U2 para alinhar a cor da lateral com a cor do centro.</span>
+                </div>
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo2/metodo-basico-cubo-magico-passo-2-02.webp" alt="">
+                    <span>Fórmula: F2
+                        Movimento duplo da face para desce o meio branco para a base do cubo.</span>
+                </div>
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo2/metodo-avancado-cruz-01.webp" alt="">
+                    <span>Repita o processo com todos os 4 meios brancos, girando apenas o topo e as faces.</span>
+                </div>
             </div>
             <div class="contentProximoPasso2">
                 <div class="proximoPasso">
-                <a class="btnRetroceder" onclick="retrocederPasso()">⇠</a>
-                <span> 02/08 </span>  
-                <a class="btnAvancar" onclick="avancarPasso()">⇢</a>
+                    <a class="btnRetroceder" onclick="retrocederPasso()">⇠</a>
+                    <span> 02/08 </span>
+                    <a class="btnAvancar" onclick="avancarPasso()">⇢</a>
                 </div>
             </div>
         </section>
@@ -117,22 +206,46 @@
                     <a class="tirarModal" onclick="tirarModal(3)"></a>
                 </div>
             </div>
-            
+
             <div class="pagina">
                 <div class="molduraImg">
                     <img src="./IMG/passo3.svg" alt="">
                 </div>
-                <div class="textPasso">
-                    <h3>Passo 3</h3>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam suscipit molestias asperiores!
+                <div class="flexPassoText">
+                    <div class="textPasso">
+                        3º PASSO: PRIMEIRA CAMADA
+                    </div>
+                    <a class="botaoDuvida3" onclick="verModalDuvida(3)">Você achou dificil esse passo?</a>
                 </div>
-                <a class="botaoDuvida3" onclick="verModalDuvida(3)">Você achou dificil esse passo?</a>
+            </div>
+            <div class="cards">
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo3/metodo-basico-cubo-magico-passo-3-01.webp" alt="">
+                    <span>Fórmula: R U R'
+                        Depois de alinhar as cores, mantenha a quina branca na direita e aplique a fórmula.</span>
+                </div>
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo3/metodo-basico-cubo-magico-passo-3-02.webp" alt="">
+                    <span>Fórmula: L' U' L
+                        Mesma situação do primeiro exemplo, porém aqui você deve manter a quina branca na
+                        esquerda.</span>
+                </div>
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo3/metodo-basico-cubo-magico-passo-3-03.webp" alt="">
+                    <span>Fórmula: R U2 R' U' R U R'
+                        Neste exemplo você precisa remover a quina branca do topo e depois inserir corretamente.</span>
+                </div>
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo3/metodo-basico-cubo-magico-03.webp" alt="">
+                    <span>Repita o processo com todos as 4 quinas brancos até completar toda a primeira camada do
+                        cubo.</span>
+                </div>
             </div>
             <div class="contentProximoPasso3">
                 <div class="proximoPasso">
-                <a class="btnRetroceder" onclick="retrocederPasso()">⇠</a>
-                <span> 03/08 </span>  
-                <a class="btnAvancar" onclick="avancarPasso()">⇢</a>
+                    <a class="btnRetroceder" onclick="retrocederPasso()">⇠</a>
+                    <span> 03/08 </span>
+                    <a class="btnAvancar" onclick="avancarPasso()">⇢</a>
                 </div>
             </div>
         </section>
@@ -160,18 +273,39 @@
                 <div class="molduraImg">
                     <img src="./IMG/passo4.svg" alt="">
                 </div>
-                <div class="textPasso">
-                    <h3>Passo 4</h3>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam suscipit molestias asperiores!
+                <div class="flexPassoText">
+                    <div class="textPasso">
+                        4º PASSO: SEGUNDA CAMADA
+                    </div>
+                    <a class="botaoDuvida4" onclick="verModalDuvida(4)">Você achou dificil esse passo?</a>
                 </div>
-        
-                <a class="botaoDuvida4" onclick="verModalDuvida(4)">Você achou dificil esse passo?</a>
+            </div>
+            <div class="cards">
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo4/metodo-basico-cubo-magico-passo-4-01.webp" alt="">
+                    <span>Fórmula: U R U' R' U' F' U F
+                        Alinhe o meio com o centro da mesma cor, mantenha na sua frente e execute a fórmula.</span>
+                </div>
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo4/metodo-basico-cubo-magico-passo-4-02.webp" alt="">
+                    <span>Fórmula: U' L' U L U F U' F'
+                        Mesma situação do primeiro exemplo, porém aqui a peça irá da frente para a esquerda.</span>
+                </div>
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo4/metodo-basico-cubo-magico-passo-4-03.webp" alt="">
+                    <span>Neste caso você precisa remover o meio errado, para isso basta aplicar uma das duas fórmulas
+                        dos exemplos anteriores.</span>
+                </div>
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo4/metodo-avancado-f2l-02.webp" alt="">
+                    <span>Repita o processo com todos os 4 meios até completar toda a segunda camada do cubo.</span>
+                </div>
             </div>
             <div class="contentProximoPasso4">
                 <div class="proximoPasso">
-                <a class="btnRetroceder" onclick="retrocederPasso()">⇠</a>
-                <span> 04/08 </span>  
-                <a class="btnAvancar" onclick="avancarPasso()">⇢</a>
+                    <a class="btnRetroceder" onclick="retrocederPasso()">⇠</a>
+                    <span> 04/08 </span>
+                    <a class="btnAvancar" onclick="avancarPasso()">⇢</a>
                 </div>
             </div>
         </section>
@@ -196,22 +330,45 @@
                 </div>
             </div>
             <div class="pagina">
+
                 <div class="molduraImg">
                     <img src="./IMG/passo5.svg" alt="">
                 </div>
-                <div class="textPasso">
-                    <h3>Passo 5</h3>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam suscipit molestias asperiores!
+                <div class="flexPassoText">
+                    <div class="textPasso">
+                        5º PASSO: CRUZ AMARELA
+                    </div>
+                    <a class="botaoDuvida5" onclick="verModalDuvida(5)">Você achou dificil esse passo?</a>
                 </div>
-                <a class="botaoDuvida5" onclick="verModalDuvida(5)">Você achou dificil esse passo?</a>
+            </div>
+            <div class="cards">
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo5/metodo-avancado-f2l-01.webp" alt="">
+                    <span>Fórmula: F R U R' U' F'
+                        No caso "ponto" você pode manter o cubo em qualquer posição, com o amarelo no topo,
+                        claro.</span>
+                </div>
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo5/metodo-basico-cubo-magico-05.webp" alt="">
+                    <span>Mesma fórmula do primeiro exemplo, porém com a "letra L" no canto superior esquerdo.</span>
+                </div>
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo5/metodo-basico-cubo-magico-caso-linha.webp" alt="">
+                    <span>Novamente a mesma fórmula, porém com a "linha" na horizontal, conforme demonstra a
+                        imagem.</span>
+                </div>
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo5/metodo-basico-cubo-magico-05.webp" alt="">
+                    <span>Identifique qual é o seu caso e execute a fórmula para que a cruz seja solucionada.</span>
+                </div>
             </div>
             <div class="contentProximoPasso5">
                 <div class="proximoPasso">
-                <a class="btnRetroceder" onclick="retrocederPasso()">⇠</a>
-                <span> 05/08 </span>  
-                <a class="btnAvancar" onclick="avancarPasso()">⇢</a>
+                    <a class="btnRetroceder" onclick="retrocederPasso()">⇠</a>
+                    <span> 05/08 </span>
+                    <a class="btnAvancar" onclick="avancarPasso()">⇢</a>
                 </div>
-        </div>
+            </div>
         </section>
 
         <section id="passo6">
@@ -237,17 +394,59 @@
                 <div class="molduraImg">
                     <img src="./IMG/passo6.svg" alt="">
                 </div>
-                <div class="textPasso">
-                    <h3>Passo 6</h3>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam suscipit molestias asperiores!
+                <div class="flexPassoText">
+                    <div class="textPasso">
+                        6º PASSO: FACE AMARELA
+                    </div>
+                    <a class="botaoDuvida6" onclick="verModalDuvida(6)">Você achou dificil esse passo?</a>
                 </div>
-                <a class="botaoDuvida6" onclick="verModalDuvida(6)">Você achou dificil esse passo?</a>
+            </div>
+            <div class="cards">
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo6/metodo-basico-cubo-magico-passo-5-01.webp" alt="">
+                    <span>Fórmula: R U R' U R U2 R'
+                        Apenas duas quinas amarelas faltando, na frente e na direita.</span>
+                </div>
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo6/metodo-basico-cubo-magico-passo-5-02.webp" alt="">
+                    <span>Mesma fórmula do primeiro exemplo, com duas quinas na esquerda, uma olhando pra você e outra
+                        para a frente.</span>
+                </div>
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo6/metodo-basico-cubo-magico-passo-5-03.webp" alt="">
+                    <span>Novamente a mesma fórmula, porém agora com duas quinas na frente, olhando para você.</span>
+                </div>
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo6/metodo-basico-cubo-magico-passo-5-04.webp" alt="">
+                    <span>Segue os mesmos movimentos, agora com 4 quinas, duas olhando para a direita e duas para a
+                        esquerda.</span>
+                </div>
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo6/metodo-basico-cubo-magico-passo-5-05.webp" alt="">
+                    <span>Muito semelhante ao exemplo anterior, porém agora com duas quinas olhando para a esquerda, uma
+                        pra você e outra para a frente.</span>
+                </div>
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo6/metodo-basico-cubo-magico-passo-5-06.webp" alt="">
+                    <span>Caso que chamamos de "anti-sune" e que tem o formato de um peixe com a cabecinha olhando para
+                        a esquerda, com 3 quinas erradas.</span>
+                </div>
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo6/metodo-basico-cubo-magico-passo-5-07.webp" alt="">
+                    <span>Finalmente a última situação, onde temos o caso "sune" propriamente dito, que também parece um
+                        peixe, com 3 quinas erradas.</span>
+                </div>
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo6/metodo-avancado-oll-02..webp" alt="">
+                    <span>Identifique qual é o seu caso e execute a fórmula até que todas as peças amarelas fiquem
+                        orientadas no topo do cubo.</span>
+                </div>
             </div>
             <div class="contentProximoPasso6">
-                    <div class="proximoPasso">
-                <a class="btnRetroceder" onclick="retrocederPasso()">⇠</a>
-                 <span> 06/08 </span>  
-                <a class="btnAvancar" onclick="avancarPasso()">⇢</a>
+                <div class="proximoPasso">
+                    <a class="btnRetroceder" onclick="retrocederPasso()">⇠</a>
+                    <span> 06/08 </span>
+                    <a class="btnAvancar" onclick="avancarPasso()">⇢</a>
                 </div>
             </div>
         </section>
@@ -275,23 +474,42 @@
                 <div class="molduraImg">
                     <img src="./IMG/passo7.svg" alt="">
                 </div>
-                <div class="textPasso">
-                    <h3>Passo 7</h3>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam suscipit molestias asperiores!
+                <div class="flexPassoText">
+                    <div class="textPasso">
+                        7º PASSO: FINALIZAR AS QUINAS
+                    </div>
+                    <a class="botaoDuvida7" onclick="verModalDuvida(7)">Você achou dificil esse passo?</a>
                 </div>
-                <a class="botaoDuvida7" onclick="verModalDuvida(7)">Você achou dificil esse passo?</a>
             </div>
-        <div class="contentProximoPasso7">
-            <div class="proximoPasso">
-            <a class="btnRetroceder" onclick="retrocederPasso()">⇠</a>
-             <span> 07/08 </span>  
-            <a class="btnAvancar" onclick="avancarPasso()">⇢</a>
+            <div class="cards">
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo7/metodo-basico-cubo-magico-passo-6-01.webp" alt="">
+                    <span>R B' R F2 R' B R F2 R2
+                        Apenas encontre um lado com 2 quinas da mesma cor e aplique a fórmula.</span>
+                </div>
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo7/metodo-basico-cubo-magico-passo-6-02.webp" alt="">
+                    <span>Se você não encontrar nenhum lado com 2 quinas da mesma cor, aplique a mesma fórmula em
+                        qualquer posição e depois volte a procurar pelas 2 quinas.</span>
+                </div>
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo7/metodo-basico-cubo-magico-07.webp" alt="">
+                    <span>Antes de seguir para o próximo passo, certifique se todas as quinas estão nas posições
+                        corretas. Se necessário faça o movimento U para alinhar as cores.</span>
+                </div>
             </div>
-        </div>
+
+            <div class="contentProximoPasso7">
+                <div class="proximoPasso">
+                    <a class="btnRetroceder" onclick="retrocederPasso()">⇠</a>
+                    <span> 07/08 </span>
+                    <a class="btnAvancar" onclick="avancarPasso()">⇢</a>
+                </div>
+            </div>
         </section>
 
         <section id="passo8">
-               <div class="modal8">
+            <div class="modal8">
                 <div class="contentModal">
                     <h4>De 1 a 5 quão fácil foi este passo? </h4>
                     <div id="myDIV">
@@ -308,87 +526,112 @@
                     </div>
                     <a class="tirarModal" onclick="tirarModal(8)"></a>
                 </div>
-            </div> 
+            </div>
             <div class="pagina">
                 <div class="imgComoMontar">
-                <div class="molduraImg">
-                    <img src="./IMG/passo8.svg" alt="">
+                    <div class="molduraImg">
+                        <img src="./IMG/passo8.svg" alt="">
+                    </div>
                 </div>
+                <div class="flexPassoText">
+                    <div class="textPasso">
+                        8º PASSO: FINALIZAR OS MEIOS
+                    </div>
+                    <a class="botaoDuvida8" onclick="verModalDuvida(8)">Você achou dificil esse passo?</a>
                 </div>
-                <div class="textPasso">
-                    <h3>Passo 8</h3>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam suscipit molestias asperiores!
+            </div>
+            <div class="cards">
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo8/metodo-basico-cubo-magico-passo-8-01.webp" alt="">
+                    <span>F2 U L R' F2 L' R U F2
+                        Posicione a face correta nas costas do cubo e aplique a fórmula.</span>
                 </div>
-                <a class="botaoDuvida8" onclick="verModalDuvida(8)">Você achou dificil esse passo?</a>
-                
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo8/metodo-basico-cubo-magico-passo-8-02.webp" alt="">
+                    <span>F2 U' L R' F2 L' R U' F2
+                        Perceba que a única diferença entre as duas fórmulas é o movimento U, que varia entre horário ou
+                        anti-horário.</span>
+                </div>
+                <div class='cardText'>
+                    <img src="./IMG/passo/passo8/metodo-basico-cubo-magico-passo-8-03.webp" alt="">
+                    <span>Caso seu cubo não tenha nenhuma face finalizada, aplique qualquer uma das fórmulas anteriores
+                        em qualquer posição e depois encontre o lado correto.</span>
+                </div>
             </div>
             <div class="contentProximoPasso8">
-            <div class="proximoPasso">
-            <a  class="btnRetroceder" onclick="retrocederPasso()">⇠</a>
-             <span> 08/08 </span>  <br> 
-             <a class="btnTerminei" onclick="termineiCubo()">TERMINEI O CUBO!!!</a>
+                <div class="proximoPasso">
+                    <a class="btnRetroceder" onclick="retrocederPasso()">⇠</a>
+                    <span> 08/08 </span> <br>
+                    <a class="btnTerminei" onclick="termineiCubo()">TERMINEI O CUBO!!!</a>
+                </div>
             </div>
-        </div>
         </section>
 
 </body>
+
 </html>
 <script>
-     let vezesConcluido = 0;
-    sessionStorage.VEZES_CONCLUIDO = vezesConcluido;
-        console.log(sessionStorage.ID_USUARIO)
-        var sessionId = sessionStorage.ID_USUARIO
+    console.log(sessionStorage.ID_USUARIO)
+    var sessionId = sessionStorage.ID_USUARIO
     function termineiCubo() {
-    const duvida1 = document.querySelector('input[name="duvida1"]:checked').value;
-    const duvida2 = document.querySelector('input[name="duvida2"]:checked').value;
-    const duvida3 = document.querySelector('input[name="duvida3"]:checked').value;
-    const duvida4 = document.querySelector('input[name="duvida4"]:checked').value;
-    const duvida5 = document.querySelector('input[name="duvida5"]:checked').value;
-    const duvida6 = document.querySelector('input[name="duvida6"]:checked').value;
-    const duvida7 = document.querySelector('input[name="duvida7"]:checked').value;
-    const duvida8 = document.querySelector('input[name="duvida8"]:checked').value;
-    
-    vezesConcluido +=1
+        const duvida1 = document.querySelector('input[name="duvida1"]:checked').value;
+        const duvida2 = document.querySelector('input[name="duvida2"]:checked').value;
+        const duvida3 = document.querySelector('input[name="duvida3"]:checked').value;
+        const duvida4 = document.querySelector('input[name="duvida4"]:checked').value;
+        const duvida5 = document.querySelector('input[name="duvida5"]:checked').value;
+        const duvida6 = document.querySelector('input[name="duvida6"]:checked').value;
+        const duvida7 = document.querySelector('input[name="duvida7"]:checked').value;
+        const duvida8 = document.querySelector('input[name="duvida8"]:checked').value;
 
-    fetch("/passos/cadastrarRespostas", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          // crie um atributo que recebe o valor recuperado aqui
-          // Agora vá para o arquivo routes/usuario.js
-          usuarioServer:  sessionStorage.EMAIL_USUARIO,
-          duvida1Server: duvida1,
-          duvida2Server: duvida2,
-          duvida3Server: duvida3,
-          duvida4Server: duvida4,
-          duvida5Server: duvida5,
-          duvida6Server: duvida6,
-          duvida7Server: duvida7,
-          duvida8Server: duvida8
+        vezesConcluido += 1
 
-        }),
-      })
-        .then(function (resposta) {
-          console.log("resposta: ", resposta);
-  
-          if (resposta.ok) {
-            window.location = "./dashboard.html"
-            console.log("DENTRO DO IF DO CADASTRAR")
-  
-         
-          } else {
-            throw "Houve um erro ao tentar realizar o cadastro!";
-          }
+        fetch("/passos/cadastrarRespostas", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                usuarioServer: sessionStorage.EMAIL_USUARIO,
+                duvida1Server: duvida1,
+                duvida2Server: duvida2,
+                duvida3Server: duvida3,
+                duvida4Server: duvida4,
+                duvida5Server: duvida5,
+                duvida6Server: duvida6,
+                duvida7Server: duvida7,
+                duvida8Server: duvida8
+
+            }),
         })
-        .catch(function (resposta) {
-          console.log(`#ERRO: ${resposta}`);
-        });
-  
-        
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
 
-      
+                if (resposta.ok) {
+                    window.location = "./dashboard.html"
+                    console.log("DENTRO DO IF DO CADASTRAR")
+
+
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+
+
+
+    }
+    var popup = document.getElementById("meuPopup");
+    var link = document.getElementById("popupLink");
+    var span = document.getElementsByClassName("close-popup")[0];
+    link.onclick = function () {
+        popup.style.display = "block";
+    }
+    span.onclick = function () {
+        popup.style.display = "none";
     }
 </script>
- 

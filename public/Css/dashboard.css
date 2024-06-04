@@ -4,6 +4,7 @@ body{
     background: url(../IMG/Fundo_1.png);
     background-repeat: repeat-y;
     background-size: 100rem;
+    overflow: hidden;
   }
   *{
     font-family: 'Poetsen One';
@@ -298,8 +299,8 @@ font-size: 30px;
 }
 .tabela {
   position: relative;
-  bottom: 7rem;
-  width: 1200px;
+  bottom: 6rem;
+  width: 1172px;
   border-collapse: collapse;
   /* background-color: #212529; */
   color: #000; /
