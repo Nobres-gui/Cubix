@@ -1,0 +1,50 @@
+.nav {
+	height: 90px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--cor-fundo);
+	width: 100%;
+	position: fixed;
+	z-index: 10;
+}
+
+.imgLogo {
+	width: 50px;
+}
+
+.navPaginas {
+	margin: 0 15px;
+	text-transform: uppercase;
+	text-decoration: none;
+	letter-spacing: 2px;
+	color: var(--cor-text);
+	font-weight: 600;
+	cursor: pointer;
+	transition: 0.3s ease;
+	border-bottom: 2px solid transparent;
+}
+
+#pagina1:hover {
+	font-size: 20px;
+	color: var(--cor-vermelho);
+}
+
+#pagina2:hover {
+	font-size: 20px;
+	color: var(--cor-verde);
+}
+
+#pagina3:hover {
+	font-size: 20px;
+	color: var(--cor-laranja);
+}
+
+#pagina4:hover {
+	font-size: 20px;
+	color: var(--cor-azul);
+}
+
+button {
+	width: 100px;
+}

@@ -5,12 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre Mim</title>
-    <link rel="stylesheet" href="Css/SobreMim.css">
+    <link rel="stylesheet" href="Css/reset.css">
+    <link rel="stylesheet" href="Css/style.css">
+    <script src="./JS/darkMode.js" defer></script>
 </head>
 
 <body>
     <header>
         <nav class="nav">
+            <button id="alternar-modo">alternar-modo</button>
             <a href="LoginCadastro.html" class="navPaginas" id="pagina1">Login</a>
             <a href="SobreMim.html" class="navPaginas" id="pagina2">Sobre mim</a>
             <a href="index.html" class="navPaginas"><img src="./IMG/Logo.png" class="imgLogo" alt="LOGO"></a>
@@ -19,7 +22,7 @@
         </nav>
     </header>
 
-    <section class="window1">
+    <section class="apresentacaoSobreMim">
 
 
         <div class="sobreMim">
@@ -38,29 +41,68 @@
         </div>
     </section>
     <footer class="rodape">
-        <div class="column1">
+        <div class="rodape__container">
             <div class="logo">
-                <img src="IMG/Logo.png" alt="Logo">
-                <h2> Cubix</h2>
+                <img src="IMG/Logo.png" class="logo__icone" alt="Logo">
+                <h2 class="logo__titulo"> Cubix</h2>
             </div>
             <div class="logos">
-                <div style="display: flex; gap: 30px;">
-                    <a href="https://www.facebook.com"><img class="icone1" src="IMG/facebook.png"
-                            alt="Ícone do Facebook"></a>
-                    <a href="https://www.instagram.com"><img class="icone2" src="IMG/instagram.png"
-                            alt="Ícone do Instagram"></a>
-                    <a href="https://www.twitter.com"><img class="icone3" src="IMG/twitter.png"
-                            alt="Ícone do Twitter"></a>
-                    <a href="https://br.linkedin.com"><img class="icone4" src="IMG/linkedin.png"
-                            alt="Ícone do Linkedin"></a>
-                </div>
-                <div class="menuLogo" style="display: flex; gap: 30px;">
-                    <a href="index.html" class="uno">Início</a>
-                    <a href="SobreMim.html">Sobre Mim</a>
-                    <a href="ComoMontar.html">Como montar</a>
-                    <a href="Tipos.html">Tipos</a>
-                    <a href="LoginCadastro.html">Login</a>
-                </div>
+                <ul class="lista">
+                    <li class="lista__item">
+                        <a class="lista__item-link" href="https://www.facebook.com">
+                            <img class="icone" src="IMG/facebook.png" alt="Ícone do Facebook">
+                        </a>
+                    </li>
+                    <li class="lista__item">
+                        <a class="lista__item-link" href="https://www.instagram.com">
+                            <img class="icone" src="IMG/instagram.png" alt="Ícone do Instagram">
+                        </a>
+                    </li>
+                    <li class="lista__item">
+                        <a class="lista__item-link" href="https://www.twitter.com">
+                            <img class="icone" src="IMG/twitter.png" alt="Ícone do Twitter">
+                        </a>
+                    </li>
+                    <li class="lista__item">
+                        <a class="lista__item-link" href="https://br.linkedin.com">
+                            <img class="icone" src="IMG/linkedin.png" alt="Ícone do Linkedin">
+                        </a>
+                    </li>
+                </ul>
+
+                <h4 class="lista__titulo-sitemap">SITEMAP</h4>
+                <ul class="lista__sitemap">
+                    <li class="lista__item-sitemap">
+                        <a class="lista__item-link-sitemap" href="index.html" class="uno">
+                            Início
+                        </a>
+                    </li>
+
+                    <li class="lista__item-sitemap">
+                        <a class="lista__item-link-sitemap" href="SobreMim.html">
+                            Sobre Mim
+                        </a>
+                    </li>
+
+                    <li class="lista__item-sitemap">
+                        <a class="lista__item-link-sitemap" href="ComoMontar.html">
+                            Como montar
+                        </a>
+                    </li>
+
+                    <li class="lista__item-sitemap">
+                        <a class="lista__item-link-sitemap" href="Tipos.html">
+                            Tipos
+                        </a>
+                    </li>
+
+                    <li class="lista__item-sitemap">
+                        <a class="lista__item-link-sitemap" href="LoginCadastro.html">
+                            Login
+                        </a>
+                    </li>
+
+                </ul>
             </div>
         </div>
 

@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+@import url('header.css');
+@import url('style.css');
+
 body{
     margin: 0;
     height: 100vh;
@@ -8,46 +11,7 @@ body{
     background: whitesmoke;
 
 }
-.nav {
-    height: 90px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: #ffffff;
-	width: 100%;
-    position: fixed;
-    z-index: 10;
-}
-.imgLogo{
-	width: 50px;
-}
-.navPaginas{
-	margin: 0 15px;
-	text-transform: uppercase;
-	text-decoration: none;
-	letter-spacing: 2px;
-	color: #000000;
-	font-weight: 600;
-	cursor: pointer;
-	transition: 0.3s ease;
-	border-bottom: 2px solid transparent;
-}
-#pagina1:hover{
-	font-size: 20px;
-	color: #fd2828;
-}
-#pagina2:hover{ 
-	font-size: 20px;
-	color: #43f561;
-}
-#pagina3:hover{ 
-	font-size: 20px;
-	color: #ff9c1a;
-}
-#pagina4:hover{ 
-	font-size: 20px;
-	color: #5589ff;
-}
+
 .window1{
     position: relative;
     /* top: 140px; */

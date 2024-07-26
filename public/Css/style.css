@@ -1,0 +1,36 @@
+@import url('header.css');
+@import url('footer.css');
+@import url('Tipos.css');
+@import url('Home.css');
+@import url('SobreMim.css');
+
+:root {
+  --cor-fundo: #fff;
+  --cor-azul: #5589ff;
+  --cor-amarelo: #ffff33;
+  --cor-vermelho: #fd2828;
+  --cor-verde: #43f561;
+  --cor-laranja: #ff9c1a;
+  --cor-cinza: #484848;
+  --cor-cinzaClaro: #9d9d9d;
+
+  --font-family: 'Poetsen One';
+  
+  --cor-text: black;
+  --cor-text2: #FFFFFF;
+
+}
+
+.dark__mode{
+  --cor-fundo: #484848;
+  --cor-text: #9d9d9d;
+  --cor-text2: black;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: 17px;
+  color: var(--cor-text);
+  background-color: var(--cor-fundo);
+  overflow-x: hidden;
+}

@@ -5,12 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tipos de cubos</title>
-    <link rel="stylesheet" href="Css/Tipos.css">
+    <link rel="stylesheet" href="Css/reset.css">
+    <link rel="stylesheet" href="./Css/style.css">
+    <script src="./JS/darkMode.js" defer></script>
 </head>
 
 <body>
-    <header class="headerNav">
+    <header>
         <nav class="nav">
+            <button id="alternar-modo">alternar-modo</button>
             <a href="LoginCadastro.html" class="navPaginas" id="pagina1">Login</a>
             <a href="SobreMim.html" class="navPaginas" id="pagina2">Sobre mim</a>
             <a href="index.html" class="navPaginas"><img src="./IMG/Logo.png" class="imgLogo" alt="LOGO"></a>
@@ -18,89 +21,126 @@
             <a href="ComoMontar.html" class="navPaginas" id="pagina4">Como Montar</a>
         </nav>
     </header>
-    <section class="window1">
 
-
-        <div class="textWTipos">
-            <div class="flextText">
-                <h1>
+    <section class="apresentacao">
+        <div class="apresentacao__texto">
+            <div class="texto__container">
+                <h1 class="texto__titulo">
                     Tipos de cubos
-                </h1><br>
+                </h1>
                 <span> Além dos formatos tradicionais dos cubos, há uma vasta gama de variantes com diferentes formas,
                     como o Pyraminx, o Megaminx e o Skewb . Cada tipo oferece desafios únicos e requer estratégias
-                    específicas para a solução. Veja abaixo algumas variantes.</span>
+                    específicas para a solução. 
+                </span> <br>
+                <span class="apresentacao__texto-destaque">Veja abaixo algumas variantes:</span>
             </div>
         </div>
-        <div class="pattern1-4">
+        <div class="patterns">
             <div class="pattern">
                 <div class="bordasCard">
-                    <img src="./IMG/cubos/3x3.png">
-                    <div class="textCard"><b>Cubo 3x3</b></div>
+                    <img class="bordasCard__img" src="./IMG/cubos/3x3.png">
+                    <div class="textCard">
+                        <span class="textCard__titulo">
+                            Cubo 3x3
+                        </span>
+                    </div>
                 </div>
             </div>
             <div class="pattern">
                 <div class="bordasCard">
-                    <img src="./IMG/cubos/2x2.png">
-                    <div class="textCard"><b>Cubo 2x2</b>
+                    <img class="bordasCard__img" src="./IMG/cubos/2x2.png">
+                    <div class="textCard">
+                        <span class="textCard__titulo">
+                            Cubo 2x2
+                        </span>
                     </div>
                 </div>
             </div>
 
             <div class="pattern">
                 <div class="bordasCard">
-                    <img src="./IMG/cubos/4x4.png">
-                    <div class="textCard"><b>Cubo 4x4</b></div>
-                </div>
-            </div>
-
-            <div class="pattern">
-                <div class="bordasCard">
-                    <img src="./IMG/cubos/axis.png">
-                    <div class="textCard"><b>Cubo Axis</b> </div>
-                </div>
-            </div>
-        </div>
-        <div class="pattern5-8">
-            <div class="pattern">
-                <div class="bordasCard">
-                    <img src="./IMG/cubos/fisher.png">
-                    <div class="textCard"><b>Cubo Fisher</b> <br>
-                    </div>
-                </div>
-            </div>
-            <div class="pattern">
-                <div class="bordasCard">
-                    <img src="./IMG/cubos/gear.png">
-                    <div class="textCard"><b>Cubo Gear V2</b></div>
-                </div>
-            </div>
-            <div class="pattern">
-                <div class="bordasCard">
-                    <img src="./IMG/cubos/penrose.png">
-                    <div class="textCard"><b>Cubo Penrose</b></div>
-                </div>
-            </div>
-            <div class="pattern">
-                <div class="bordasCard">
-                    <img src="./IMG/cubos/piramins.png">
-                    <div class="textCard"><b>Piraminx</b></div>
-                </div>
-            </div>
-
-        </div>
-        <div class="pattern8-10">
-            <div class="pattern">
-                <div class="bordasCard">
-                    <img src="./IMG/cubos/polaris.png">
-                    <div class="textCard"><b>Cubo Polaris</b>
+                    <img class="bordasCard__img" src="./IMG/cubos/4x4.png">
+                    <div class="textCard">
+                        <span class="textCard__titulo">
+                            Cubo 4x4
+                        </span>
                     </div>
                 </div>
             </div>
 
             <div class="pattern">
                 <div class="bordasCard">
-                    <img src="./IMG/cubos/skweb.png">
-                    <div class="textCard"><b>Cubo Skweb</b>
+                    <img class="bordasCard__img" src="./IMG/cubos/axis.png">
+                    <div class="textCard">
+                        <span class="textCard__titulo">
+                            Cubo Axis
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="patterns">
+            <div class="pattern">
+                <div class="bordasCard">
+                    <img class="bordasCard__img" src="./IMG/cubos/fisher.png">
+                    <div class="textCard">
+                        <span class="textCard__titulo">
+                            Cubo Fisher
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="pattern">
+                <div class="bordasCard">
+                    <img class="bordasCard__img" src="./IMG/cubos/gear.png">
+                    <div class="textCard">
+                        <span class="textCard__titulo">
+                            Cubo Gear V2
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="pattern">
+                <div class="bordasCard">
+                    <img class="bordasCard__img" src="./IMG/cubos/penrose.png">
+                    <div class="textCard">
+                        <span class="textCard__titulo">
+                            Cubo Penrose
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="pattern">
+                <div class="bordasCard">
+                    <img class="bordasCard__img" src="./IMG/cubos/piramins.png">
+                    <div class="textCard">
+                        <span class="textCard__titulo">
+                            Piraminx
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="patterns">
+            <div class="pattern">
+                <div class="bordasCard">
+                    <img class="bordasCard__img" src="./IMG/cubos/polaris.png">
+                    <div class="textCard">
+                        <span class="textCard__titulo">
+                            Cubo Polaris
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pattern">
+                <div class="bordasCard">
+                    <img class="bordasCard__img" src="./IMG/cubos/skweb.png">
+                    <div class="textCard">
+                        <span class="textCard__titulo">
+                            Cubo Skweb
+                        </span>
                     </div>
                 </div>
             </div>
@@ -110,31 +150,71 @@
 
 
     <footer class="rodape">
-        <div class="column1">
+        <div class="rodape__container">
             <div class="logo">
-            <img src="IMG/Logo.png" alt="Logo"><h2> Cubix</h2>
-        </div>
+                <img src="IMG/Logo.png" class="logo__icone" alt="Logo">
+                <h2 class="logo__titulo"> Cubix</h2>
+            </div>
             <div class="logos">
-                <div style="display: flex; gap: 30px;">
-                <a href="https://www.facebook.com"><img class="icone1" src="IMG/facebook.png"
-                        alt="Ícone do Facebook"></a>
-                <a href="https://www.instagram.com"><img class="icone2" src="IMG/instagram.png"
-                        alt="Ícone do Instagram"></a>
-                <a href="https://www.twitter.com"><img class="icone3" src="IMG/twitter.png"
-                        alt="Ícone do Twitter"></a>
-                <a href="https://br.linkedin.com"><img class="icone4" src="IMG/linkedin.png" 
-                        alt="Ícone do Linkedin"></a>
-                    </div>
-                    <div class="menuLogo" style="display: flex; gap: 30px;">
-                        <a href="index.html" class="uno">Início</a>
-                 <a href="SobreMim.html">Sobre Mim</a>
-                     <a href="ComoMontar.html">Como montar</a>
-                    <a href="Tipos.html">Tipos</a>
-    <a href="LoginCadastro.html">Login</a>
-</div>
+                <ul class="lista">
+                    <li class="lista__item">
+                        <a class="lista__item-link" href="https://www.facebook.com">
+                            <img class="icone" src="IMG/facebook.png" alt="Ícone do Facebook">
+                        </a>
+                    </li>
+                    <li class="lista__item">
+                        <a class="lista__item-link" href="https://www.instagram.com">
+                            <img class="icone" src="IMG/instagram.png" alt="Ícone do Instagram">
+                        </a>
+                    </li>
+                    <li class="lista__item">
+                        <a class="lista__item-link" href="https://www.twitter.com">
+                            <img class="icone" src="IMG/twitter.png" alt="Ícone do Twitter">
+                        </a>
+                    </li>
+                    <li class="lista__item">
+                        <a class="lista__item-link" href="https://br.linkedin.com">
+                            <img class="icone" src="IMG/linkedin.png" alt="Ícone do Linkedin">
+                        </a>
+                    </li>
+                </ul>
+
+                <h4 class="lista__titulo-sitemap">SITEMAP</h4>
+                <ul class="lista__sitemap">
+                    <li class="lista__item-sitemap">
+                        <a class="lista__item-link-sitemap" href="index.html" class="uno">
+                            Início
+                        </a>
+                    </li>
+
+                    <li class="lista__item-sitemap">
+                        <a class="lista__item-link-sitemap" href="SobreMim.html">
+                            Sobre Mim
+                        </a>
+                    </li>
+
+                    <li class="lista__item-sitemap">
+                        <a class="lista__item-link-sitemap" href="ComoMontar.html">
+                            Como montar
+                        </a>
+                    </li>
+
+                    <li class="lista__item-sitemap">
+                        <a class="lista__item-link-sitemap" href="Tipos.html">
+                            Tipos
+                        </a>
+                    </li>
+
+                    <li class="lista__item-sitemap">
+                        <a class="lista__item-link-sitemap" href="LoginCadastro.html">
+                            Login
+                        </a>
+                    </li>
+
+                </ul>
             </div>
         </div>
-       
+
     </footer>
 </body>
 
